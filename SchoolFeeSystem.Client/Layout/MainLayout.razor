@@ -7,7 +7,7 @@
     <MudLayout>
         <MudAppBar Elevation="1">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-            <MudText Typo="Typo.h5" Class="bahij-nassim-bold">حسین هاشمي خصوصي ښوونځی</MudText>
+            <MudText Typo="Typo.h5">حسین هاشمي خصوصي ښوونځی</MudText>
             <MudSpacer />
             <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
         </MudAppBar>
@@ -15,11 +15,7 @@
             <NavMenu />
         </MudDrawer>
         <MudMainContent>
-            <MudPaper Height="400px" Width="100%">
-                <MudContainer Fixed="true">
-                    @Body
-                </MudContainer>
-            </MudPaper>
+            @Body
         </MudMainContent>
     </MudLayout>
 </MudRTLProvider>
