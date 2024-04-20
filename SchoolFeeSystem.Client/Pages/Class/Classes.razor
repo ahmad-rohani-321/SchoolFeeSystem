@@ -1,0 +1,27 @@
+﻿@page "/classes"
+@inject IDialogService DialogService
+<MudPaper Class="pa-16 ma-2" Elevation="0">
+    <MudStack>
+        <MudButton @onclick="OpenDialog" Variant="Variant.Filled" Color="Color.Primary"><span class="bahij-nassim-regular">نوې ټولګی</span></MudButton>
+        <MudSimpleTable Hover="true" Style="overflow-x: auto;">
+            <thead class="bahij-nassim-bold">
+                <tr>
+                    <th>شمېره</th>
+                    <th>ټولګی</th>
+                    <th>عملیه</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bahij-nassim-regular">1</td>
+                    <td>
+                        <MudLink Href="#"><span class="bahij-nassim-regular">لومړی ټولګی</span></MudLink>
+                    </td>
+                    <td>
+                        <MudButton @onclick="OpenDialog" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><span class="bahij-nassim-regular">تغیر</span></MudButton>
+                    </td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+    </MudStack>
+</MudPaper>
