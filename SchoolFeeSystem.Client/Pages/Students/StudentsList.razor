@@ -1,0 +1,84 @@
+﻿@page "/students"
+@inject IDialogService DialogService
+<MudStack Class="pa-6">
+    <MudPaper Class="pa-3">
+        <MudForm>
+            <MudGrid>
+                <MudItem>
+                    <MudSelect T="string" Label="پلټني ډول" Variant="Variant.Text" Margin="Margin.Dense">
+                        <MudSelectItem Value="@("آیډی")" />
+                        <MudSelectItem Value="@("نوم")" />
+                        <MudSelectItem Value="@("د پلار نوم")" />
+                        <MudSelectItem Value="@("د نیکه نوم")" />
+                        <MudSelectItem Value="@("موبایل")" />
+                        <MudSelectItem Value="@("تذکره")" />
+                    </MudSelect>
+                </MudItem>
+
+                <MudItem>
+                    <MudTextField T="string" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
+                </MudItem>
+                <MudItem>
+                    <MudButton Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                        @if (_processing)
+                        {
+                            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                            <MudText Class="ms-2">پلټنه</MudText>
+                        }
+                        else
+                        {
+                            <MudText>پلټنه</MudText>
+                        }
+                    </MudButton>
+                </MudItem>
+                <MudItem>
+                    <MudButton Href="/newstudent" Variant="Variant.Filled" Color="Color.Primary">نوی زده کوونکی</MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+    </MudPaper>
+    <MudPaper Class="pa-3">
+        <MudSimpleTable Hover="true" Style="overflow-x: auto;" Dense="true" Elevation="0">
+            <thead class="bahij-nassim-bold">
+                <tr>
+                    <th>آیډي</th>
+                    <th>مکمل نوم</th>
+                    <th>د پلار نوم</th>
+                    <th>د نیکه نوم</th>
+                    <th>جنسیت</th>
+                    <th>تذکره</th>
+                    <th>موبایل شمېره</th>
+                    <th>عملیه</th>
+                </tr>
+            </thead>
+            <tbody class="bahij-nassim-regular">
+                <tr>
+                    <td>123</td>
+                    <td>
+                        <MudLink Href="/editstudent">
+                            <span class="bahij-nassim-regular">احمد روحاني</span>
+                        </MudLink>
+                    </td>
+                    <td>حاجي صاحب</td>
+                    <td>حاجي اغا</td>
+                    <td>نارینه</td>
+                    <td>456-456-456</td>
+                    <td>070000000</td>
+                    <td>
+                        <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                            <MudMenuItem Href="/editstudent">
+                                <span class="bahij-nassim-regular">تغیر</span>
+                            </MudMenuItem>
+                            <MudMenuItem Href="/feesedit">
+                                <span class="bahij-nassim-regular">فیس تغیر</span>
+                            </MudMenuItem>
+                            <MudMenuItem OnClick="ShowDiaog">
+                                <span class="bahij-nassim-regular">غیر فعال</span>
+                            </MudMenuItem>
+                        </MudMenu>
+                    </td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+    </MudPaper>
+</MudStack>

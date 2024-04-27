@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0611d9fe-e652-4998-aea0-ec3c04795ea1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolFeeSystem.Client\SchoolFeeSystem.Client.csproj" />
-    <ProjectReference Include="..\SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

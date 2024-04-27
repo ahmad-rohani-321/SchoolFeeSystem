@@ -1,0 +1,47 @@
+﻿@page "/branches"
+<MudForm >
+    <MudGrid>
+        <MudItem>
+            <MudTextField Class="bahij-nassim-regular" T="string" Label="څانګي نوم"> </MudTextField>
+        </MudItem>
+        <MudItem>
+            <MudTextField Class="bahij-nassim-regular" T="string" Label="ادرس"> </MudTextField>
+        </MudItem>
+        <MudItem>
+            <MudButton Class="bahij-nassim-regular" Color="Color.Primary" Variant="Variant.Filled">ثبت</MudButton>
+        </MudItem>
+    </MudGrid>
+</MudForm>
+<MudSimpleTable Class="my-5" Elevation="3">
+    <thead class="bahij-nassim-bold">
+        <tr>
+            <th>شمېره</th>
+            <th>څانګي نوم</th>
+            <th>ادرس</th>
+            <th>یوزران</th>
+            <th>عملیه</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bahij-nassim-regular">
+            <td>1</td>
+            <td>لومړی څانګه</td>
+            <td>کندهار</td>
+            <td>
+                <MudLink Href="/users">
+                    <span class="bahij-nassim-regular">یوزران</span>
+                </MudLink>
+            </td>
+            <td>
+                <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                    <MudMenuItem>
+                        <span class="bahij-nassim-regular">تغیر</span>
+                    </MudMenuItem>
+                    <MudMenuItem>
+                        <span class="bahij-nassim-regular">غیر فعال</span>
+                    </MudMenuItem>
+                </MudMenu>
+            </td>
+        </tr>
+    </tbody>
+</MudSimpleTable>

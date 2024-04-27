@@ -1,0 +1,102 @@
+﻿@page "/fees"
+@inject IDialogService DialogService
+<MudPaper Class="pa-5 ma-8" Elevation="3">
+    <MudPaper Elevation="0">
+        <MudForm>
+            <MudGrid>
+                <MudItem>
+                    <MudItem>
+                        <MudSelect T="string" Label="پلټني ډول" Variant="Variant.Text" Margin="Margin.Dense">
+                            <MudSelectItem Value="@("آیډی")" />
+                            <MudSelectItem Value="@("نوم")" />
+                            <MudSelectItem Value="@("د پلار نوم")" />
+                            <MudSelectItem Value="@("د نیکه نوم")" />
+                            <MudSelectItem Value="@("موبایل")" />
+                            <MudSelectItem Value="@("تذکره")" />
+                        </MudSelect>
+                    </MudItem>
+                </MudItem>
+                <MudItem>
+                    <MudTextField T="string" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
+                </MudItem>
+                <MudItem>
+                    <MudButton Disabled="@_searchProcess" OnClick="SearchProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                        @if (_searchProcess)
+                        {
+                            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        }
+                        else
+                        {
+                            <MudText>پلټنه</MudText>
+                        }
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+        <MudMenu Class="my-2" ActivationEvent="@MouseEvent.LeftClick" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+            <ActivatorContent>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary">ټولي ټولګۍ</MudButton>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem Href="/students" >ټولي ټولګۍ</MudMenuItem>
+                <MudMenuItem Href="/students">لومړی ټولګۍ</MudMenuItem>
+                <MudMenuItem Href="/students">دوهم ټولګۍ</MudMenuItem>
+                <MudMenuItem Href="/students">درېیم ټولګۍ</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </MudPaper>
+    <MudSimpleTable Hover="true" Style="overflow-x: auto;" FixedHeader="true" Dense="true">
+        <thead class="bahij-nassim-bold">
+            <tr>
+                <th>آیډي</th>
+                <th>مکمل نوم او د پلار نوم</th>
+                <th>ټولګۍ</th>
+                <th>د فیس مبلغ</th>
+            </tr>
+        </thead>
+        <tbody class="bahij-nassim-regular">
+            <tr>
+                <td>123</td>
+                <td>احمد روحاني</td>
+                <td>لومړی ټولګی</td>
+                <td>
+                    <MudNumericField T="int" Label="د فیس مبلغ"></MudNumericField>
+                </td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>احمد روحاني</td>
+                <td>لومړی ټولګی</td>
+                <td>
+                    <MudNumericField T="int" Label="د فیس مبلغ"></MudNumericField>
+                </td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>احمد روحاني</td>
+                <td>لومړی ټولګی</td>
+                <td>
+                    <MudNumericField T="int" Label="د فیس مبلغ"></MudNumericField>
+                </td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>احمد روحاني</td>
+                <td>لومړی ټولګی</td>
+                <td>
+                    <MudNumericField T="int" Label="د فیس مبلغ"></MudNumericField>
+                </td>
+            </tr>
+        </tbody>
+    </MudSimpleTable>
+    <MudButton Disabled="@_saveProcess" OnClick="SaveProcessSomething" Variant="Variant.Filled" Class="my-4" FullWidth="true" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">
+        @if (_saveProcess)
+        {
+            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+        }
+        else
+        {
+            <MudText>ټول ثبت</MudText>
+        }
+    </MudButton>
+</MudPaper>

@@ -1,0 +1,45 @@
+﻿@page "/useractivities"
+<MudPaper Class="pa-5 ma-8" Elevation="3">
+    <MudForm Class="mt-2 mb-5">
+        <MudGrid>
+            <MudItem Style="font-family: fontfile;">
+                <MudSelect T="int" Label="یوزر" Dense="true" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                    <MudSelectItem T="int">User name - branch </MudSelectItem>
+                    <MudSelectItem T="int">User name - branch </MudSelectItem>
+                    <MudSelectItem T="int">User name - branch </MudSelectItem>
+                    <MudSelectItem T="int">User name - branch </MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem>
+                <MudLocalizedDateRangePicker Editable="true" Label="د نیټو ترمنځ"></MudLocalizedDateRangePicker>
+            </MudItem>
+            <MudItem>
+                <MudButton Disabled="@_isInProcess" OnClick="ProcessDuration" Variant="Variant.Filled" Class="my-4" FullWidth="true" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">
+                    @if (_isInProcess)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    }
+                    else
+                    {
+                        <MudText>پلټنه</MudText>
+                    }
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+
+    <MudTimeline TimelineAlign="TimelineAlign.Default">
+        <MudTimelineItem Color="Color.Dark" Elevation="25">
+            <ItemOpposite>
+                <MudText Color="Color.Dark" Typo="Typo.h6">1402/3/15</MudText>
+            </ItemOpposite>
+            <ItemContent>
+                <MudPaper Elevation="0" Class="mt-n1">
+                    <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">لومړی یوزر</MudText>
+                    <MudText Typo="Typo.body2">لومړی څانګه</MudText>
+                    <MudText Typo="Typo.body2">دغه یوزر لاندي کړني ترسره کړي دي</MudText>
+                </MudPaper>
+            </ItemContent>
+        </MudTimelineItem>
+    </MudTimeline>
+</MudPaper>

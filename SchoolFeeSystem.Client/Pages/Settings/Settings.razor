@@ -1,2 +1,42 @@
 ﻿@page "/settings"
-<h1>Settings</h1>
+<MudPaper Class="pa-16 ma-2" Elevation="0">
+    <MudPaper Class="pa-4">
+        <MudText Typo="Typo.h6">د ښوونځۍ معلومات</MudText>
+        <MudGrid>
+            <MudItem>
+                <MudTextField Disabled="@Enabled" T="string" Label="ښوونځۍ نوم" Class="bahij-nassim-regular" Required="true" />
+            </MudItem>
+            <MudItem>
+                <MudTextField Disabled="@Enabled" T="string" Label="ادرس" Class="bahij-nassim-regular" Required="true" />
+            </MudItem>
+            <MudItem>
+                <MudFileUpload Disabled="@Enabled" T="object" Class="bahij-nassim-regular" Accept=".png, .jpg">
+                    <ButtonTemplate>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   StartIcon="@Icons.Material.Filled.CloudUpload"
+                                   for="@context.Id">
+                            لوګو
+                        </MudButton>
+                    </ButtonTemplate>
+                </MudFileUpload>
+            </MudItem>
+            <MudButton>asd</MudButton>
+        </MudGrid>
+        <MudSwitch @bind-Value="@Enabled" Label="@SwicthValue()" Class="bahij-nassim-regular" Color="Color.Success" UnCheckedColor="Color.Error" />
+    </MudPaper>
+    <MudPaper Class="pa-4">
+        <MudFileUpload T="object" Class="bahij-nassim-regular" Accept=".png, .jpg">
+            <ButtonTemplate>
+                <MudButton HtmlTag="label"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Backup"
+                           for="@context.Id">
+                    بیک آپ اخیستل
+                </MudButton>
+            </ButtonTemplate>
+        </MudFileUpload>
+    </MudPaper>
+</MudPaper>

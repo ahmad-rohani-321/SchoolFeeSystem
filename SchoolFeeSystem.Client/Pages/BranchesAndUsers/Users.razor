@@ -1,0 +1,45 @@
+﻿@page "/users"
+<MudPaper Class="pa-16 ma-2" Elevation="0">
+    <MudGrid>
+        <MudItem md="6" lg="6">
+            <MudPaper Width="auto" Class="px-6 py-6 pl-6 pr-6">
+                <MudForm>
+                    <MudTextField Label="ایمیل" T="string" Required="true" RequiredError="ایمیل حتمي دی" />
+                    <MudTextField Label="یوزر نوم" T="string" Required="true" RequiredError="یوزر نوم حتمي دی"/>
+                    <MudTextField Label="پاسورډ" T="string" InputType="InputType.Password" Required="true" RequiredError="پاسورډ حتمي دی"/>
+                    <MudTextField Label="پاسورډ تکرار" T="string" InputType="InputType.Password" />
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-3">ثبت</MudButton>
+                </MudForm>
+            </MudPaper> 
+        </MudItem>
+        <MudItem md="6" lg="6">
+            <MudSimpleTable Hover="true">
+                <thead>
+                    <tr>
+                        <th>شمېره</th>
+                        <th>یوزر نوم</th>
+                        <th>څانګه</th>
+                        <th>عملیه</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Name</td>
+                        <td>First Branch</td>
+                        <td>
+                            <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                                <MudMenuItem >
+                                    <span class="bahij-nassim-regular">تغیر</span>
+                                </MudMenuItem>
+                                <MudMenuItem >
+                                    <span class="bahij-nassim-regular">غیر فعال</span>
+                                </MudMenuItem>
+                            </MudMenu>
+                        </td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        </MudItem>
+    </MudGrid>
+</MudPaper>

@@ -1,10 +1,26 @@
 ﻿<MudPaper Width="250px" Class="d-inline-flex py-3" Elevation="0">
     <MudNavMenu Class="mud-width-full  bahij-nassim-bold">
+
         <MudText Typo="Typo.body2" Class="px-4 mud-text-secondary"></MudText>
         <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard">ډاشبورډ</MudNavLink>
         <MudNavLink Href="/classes" Icon="@Icons.Material.Filled.Class">ټولګی</MudNavLink>
-        <MudNavLink Href="/finance" Icon="@Icons.Material.Filled.AccountBalance">مالي چاري</MudNavLink>
-        <MudNavLink Href="/reports" Icon="@Icons.Material.Filled.MenuBook">راپورونه</MudNavLink>
-        <MudNavLink Href="/settings" Icon="@Icons.Material.Filled.Settings">تنظیمات</MudNavLink>
+        <MudNavLink Href="/students" Icon="@Icons.Material.Filled.Boy">زده کونکي</MudNavLink> @* student ID Card *@
+
+        <MudNavGroup Title="مالي چاري" Icon="@Icons.Material.Filled.AccountBalance">
+            <MudNavLink Href="/dailypayments" Icon="@Icons.Material.Filled.AccountBalance">ورځني تادیات</MudNavLink>
+            <MudNavLink Href="/fees" Icon="@Icons.Material.Filled.AttachMoney">فیس</MudNavLink>
+            <MudNavLink Href="/codes" Icon="@Icons.Material.Filled.AccountBalance">مصارف او عوایو کوډونه</MudNavLink>
+        </MudNavGroup>
+
+        <MudNavGroup Title="راپورونه" Icon="@Icons.Material.Filled.MenuBook">
+            <MudNavLink Href="/useractivities" Icon="@Icons.Material.Filled.SupervisedUserCircle">یوزر فعالیتونه</MudNavLink>
+        </MudNavGroup>
+
+        <MudNavGroup Title="تنظیمات" Icon="@Icons.Material.Filled.Settings">
+            <MudNavLink Href="/settings" Icon="@Icons.Material.Filled.Settings">تنظیمات</MudNavLink> @* backup is here *@
+            <MudNavLink Href="/branches" Icon="@Icons.Material.Filled.Apartment">څانګي </MudNavLink> @*branches and users are here*@
+            <MudNavLink Href="/users" Icon="@Icons.Material.Filled.VerifiedUser">یزران </MudNavLink> @*branches and users are here*@
+        </MudNavGroup>
+
     </MudNavMenu>
 </MudPaper>

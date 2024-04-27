@@ -1,0 +1,56 @@
+﻿@page "/editstudent"
+<MudPaper Class="pa-16 " Elevation="3">
+    <MudText Typo="Typo.h4">
+        <span class="bahij-nassim-bold">د زده کوونکي معلومات تغیرول</span>
+    </MudText>
+    <MudForm>
+        <MudGrid>
+            <MudItem md="4">
+                <MudTextField T="string" Label="آیډي"/>
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="نوم" />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="د پلار نوم" />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="د نیکه نوم" />
+            </MudItem>
+            <MudItem>
+                <MudTextField T="string" Label="تذکره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="موبایل شمېره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="کورنۍ شمېره " />
+            </MudItem>
+            <MudItem md="4" xs="12">
+                <MudFileUpload T="IBrowserFile" Accept=".jpg" FilesChanged="UploadFiles">
+                    <ButtonTemplate>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   StartIcon="@Icons.Material.Filled.CloudUpload"
+                                   for="@context.Id">
+                            عکس انتخاب کړی
+                        </MudButton>
+                    </ButtonTemplate>
+                </MudFileUpload>
+            </MudItem>
+        </MudGrid>
+        <MudPaper Class="my-8" Elevation="0">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+        </MudPaper>
+    </MudForm>
+</MudPaper>
+
+@code{
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+    }
+}

@@ -1,0 +1,46 @@
+﻿@page "/codes"
+<MudContainer>
+    <MudGrid Class="justify-center">
+        <MudPaper Class="flex-initial d-flex py-8 pa-4 ma-2" Width="auto">
+            <MudForm>
+                <MudStack>
+                    <MudTextField T="string" Label="حساب نوم" Required="true" RequiredError="حصاب نوم حتمي دئ" />
+                    <MudSelect Dense="true" T="string" Label="څانګه" Variant="Variant.Filled">
+                        <MudSelectItem Value="@("لومړی څانګه")" />
+                        <MudSelectItem Value="@("دوهمه څانګه")" />
+                        <MudSelectItem Value="@("درېیمه څانګه")" />
+                    </MudSelect>
+                    <MudRadioGroup T="bool">
+                        <MudRadio Value="true" Color="Color.Primary">رسید</MudRadio>
+                        <MudRadio Value="false" Color="Color.Secondary">برد</MudRadio>
+                    </MudRadioGroup>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2">لغوه</MudButton>
+                </MudStack>
+            </MudForm>
+
+        </MudPaper>
+        <MudPaper Class="flex-initial d-flex py-8 pa-4 ma-2" Width="auto">
+            <MudSimpleTable Hover="true" Style="overflow-x: auto;" Elevation="0">
+                <thead class="bahij-nassim-bold">
+                    <tr>
+                        <th>شمېره</th>
+                        <th>حساب</th>
+                        <th>عملیه</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bahij-nassim-regular">1</td>
+                        <td>
+                            <MudLink Href="#"><span class="bahij-nassim-regular">لومړی ټولګی</span></MudLink>
+                        </td>
+                        <td>
+                            <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><span class="bahij-nassim-regular">تغیر</span></MudButton>
+                        </td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        </MudPaper>
+    </MudGrid>
+</MudContainer>

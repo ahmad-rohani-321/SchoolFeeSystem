@@ -1,0 +1,98 @@
+﻿@page "/newstudent"
+<MudPaper Class="pa-16 " Elevation="3">
+    <MudText Typo="Typo.h4">
+        <span class="bahij-nassim-bold">نوی زده کوونکی</span>
+    </MudText>
+    <MudForm>
+        <MudGrid>
+            <MudItem md="4">
+                <MudTextField T="string" Label="آیډي"/>
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="نوم" />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="د پلار نوم" />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="د نیکه نوم" />
+            </MudItem>
+            <MudItem md="4">
+                <MudRadioGroup T="bool">
+                    <MudRadio Value="true" Color="Color.Primary">نارینه</MudRadio>
+                    <MudRadio Value="false" Color="Color.Secondary">ښځینه</MudRadio>
+                </MudRadioGroup>
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="تذکره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="موبایل شمېره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudTextField T="string" Label="کورنۍ شمېره " />
+            </MudItem>
+            <MudItem md="4" xs="12">
+                <MudFileUpload T="IBrowserFile" Accept=".jpg" FilesChanged="UploadFiles">
+                    <ButtonTemplate>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   StartIcon="@Icons.Material.Filled.CloudUpload"
+                                   for="@context.Id">
+                            عکس انتخاب کړی
+                        </MudButton>
+                    </ButtonTemplate>
+                </MudFileUpload>
+            </MudItem>
+        </MudGrid>
+        <MudPaper Class="my-8" Elevation="0">
+            <MudText Align="Align.Justify" Typo="Typo.h5">
+                <span class="bahij-nassim-bold">په مختلفو څانګو کي د زده کوونکي فیس</span>
+            </MudText>
+            <MudText Align="Align.Justify" Typo="Typo.body1">
+                <span class="bahij-nassim-bold">لومړی څانګه</span>
+            </MudText>
+            <MudSimpleTable Dense="true" Hover="true">
+                <thead class="bahij-nassim-bold">
+                    <tr>
+                        <th>د فیس ډول</th>
+                        <th>د تادیې مبلغ</th>
+                    </tr>
+                </thead>
+                <tbody class="bahij-nassim-regular">
+                    <tr>
+                        <td>عمومي فیس</td>
+                        <td>
+                            <MudNumericField T="int" Label="عمومي فیس" Variant="Variant.Text" Min="0" Max="10" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>جزایی فیس</td>
+                        <td>
+                            <MudNumericField T="int" Label="جزایی فیس" Variant="Variant.Text" Min="0" Max="10" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>د فعالیت فیس</td>
+                        <td>
+                            <MudNumericField T="int" Label="د فعالیت فیس" Variant="Variant.Text" Min="0" Max="10" />
+                        </td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        </MudPaper>
+        <MudPaper Class="my-8" Elevation="0">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+        </MudPaper>
+    </MudForm>
+</MudPaper>
+
+@code{
+    IList<IBrowserFile> files = new List<IBrowserFile>();
+
+    private void UploadFiles(IBrowserFile file)
+    {
+        files.Add(file);
+    }
+}
