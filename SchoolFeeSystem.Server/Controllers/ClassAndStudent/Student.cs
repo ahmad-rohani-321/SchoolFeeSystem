@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SchoolFeeSystem.Shared;
 namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
 {
     [ApiController]
@@ -29,7 +30,7 @@ namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudent(int id)
         {
-            Entities.Student? student = await _context.Student.SingleOrDefaultAsync(x => x.Id == id);
+            Entities.Student student = await _context.Student.SingleOrDefaultAsync(x => x.Id == id);
             if (student == null)
             {
                 return NotFound();
@@ -64,7 +65,13 @@ namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
                     getstudent.ParentPhone = student.ParentPhone;
                     getstudent.PersonalPhone = student.PersonalPhone;
                     await _context.SaveChangesAsync();
-                    return Ok(getstudent);
+                    Response<Entities.Student> response = new() 
+                    {
+                        Data = getstudent,
+                        IsSuccess = true,
+                        Message = "Updated!"
+                    };
+                    return Ok(response);
                 }
             }
         }

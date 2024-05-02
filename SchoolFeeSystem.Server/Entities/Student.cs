@@ -5,18 +5,18 @@ namespace SchoolFeeSystem.Server.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string UnitqueKey { get; set; } = default!;
-        public string FirstName { get; set; } = default!;
-        public string FatherName { get; set; } = default!;
-        public string GrandFatherName { get; set; } = default!;
-        public string Photo { get; set; } = default!;
+        public string UnitqueKey { get; set; }
+        public string FirstName { get; set; }
+        public string FatherName { get; set; }
+        public string GrandFatherName { get; set; }
+        public string Photo { get; set; }
         public bool Gender { get; set; }
-        public string BloodGroup { get; set; } = default!;
+        public string BloodGroup { get; set; }
         public DateOnly DOB { get; set; }
-        public string TazkiraNo { get; set; } = default!;
-        public string HomeAddress { get; set; } = default!;
-        public string PersonalPhone { get; set; } = default!;
-        public string ParentPhone { get; set; } = default!;
+        public string TazkiraNo { get; set; }
+        public string HomeAddress { get; set; }
+        public string PersonalPhone { get; set; }
+        public string ParentPhone { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
     }

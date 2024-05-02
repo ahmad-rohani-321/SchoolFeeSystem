@@ -10,9 +10,9 @@ namespace SchoolFeeSystem.Server.Entities
         public int ClassId { get; set;}
         public int StudentFee { get; set; }
         [ForeignKey(nameof(StudentId))]
-        public Student Student { get; set; } = default!;
+        public Student Student { get; set; }
         [ForeignKey(nameof(ClassId))]
-        public Class Class { get; set; } = default!;
+        public Class Class { get; set; }
         public DateTime EntranceDate { get; set; } = DateTime.Now;
     }
 }

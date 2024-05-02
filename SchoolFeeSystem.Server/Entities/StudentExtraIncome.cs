@@ -6,8 +6,8 @@ namespace SchoolFeeSystem.Server.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string IncomeName { get; set; } = default!;
-        public string Remarks { get; set; } = default!;
+        public string IncomeName { get; set; }
+        public string Remarks { get; set; }
 
     }
 }

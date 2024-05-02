@@ -12,9 +12,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Client", "SchoolFeeSystem.Client\SchoolFeeSystem.Client.csproj", "{7A96F997-4635-4938-8EFA-4D6E1712FB4D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C} = {4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}
+		{ABE010D7-77AD-4BBF-816B-4FEA2515DA84} = {ABE010D7-77AD-4BBF-816B-4FEA2515DA84}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFeeSystem.Shared", "SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj", "{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Shared", "SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj", "{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortid", "shortid\shortid.csproj", "{ABE010D7-77AD-4BBF-816B-4FEA2515DA84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,10 @@ Global
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE010D7-77AD-4BBF-816B-4FEA2515DA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE010D7-77AD-4BBF-816B-4FEA2515DA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE010D7-77AD-4BBF-816B-4FEA2515DA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE010D7-77AD-4BBF-816B-4FEA2515DA84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,8 +14,8 @@ namespace SchoolFeeSystem.Server.Entities
         public DateOnly ExpireDate { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
         [ForeignKey(nameof(StudentId))]
-        public Student Student { get; set; } = default!;
+        public Student Student { get; set; }
         [ForeignKey(nameof(ClassId))]
-        public Class Class { get; set; } = default!;
+        public Class Class { get; set; }
     }
 }

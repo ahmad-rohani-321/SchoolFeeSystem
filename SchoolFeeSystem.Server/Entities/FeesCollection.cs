@@ -18,6 +18,6 @@ namespace SchoolFeeSystem.Server.Entities
         public int FeesRemaining { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
         [ForeignKey(nameof(StudentClassId))]
-        public ClassStudents ClassStudent { get; set; } = default!;
+        public ClassStudents ClassStudent { get; set; }
     }
 }
