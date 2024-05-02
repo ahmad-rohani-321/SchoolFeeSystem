@@ -4,17 +4,21 @@
         <MudItem md="6" lg="6">
             <MudPaper Width="auto" Class="px-6 py-6 pl-6 pr-6">
                 <MudForm>
-                    <MudTextField Label="ایمیل" T="string" Required="true" RequiredError="ایمیل حتمي دی" />
-                    <MudTextField Label="یوزر نوم" T="string" Required="true" RequiredError="یوزر نوم حتمي دی"/>
-                    <MudTextField Label="پاسورډ" T="string" InputType="InputType.Password" Required="true" RequiredError="پاسورډ حتمي دی"/>
-                    <MudTextField Label="پاسورډ تکرار" T="string" InputType="InputType.Password" />
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-3">ثبت</MudButton>
+                    <MudLocalizedTextField Label="ایمیل" Required RequiredError="ایمیل حتمي دی" />
+                    <MudLocalizedTextField Label="یوزر نوم" Required RequiredError="یوزر نوم حتمي دی" />
+                    <MudLocalizedTextField Label="پاسورډ" InputType="InputType.Password" Required RequiredError="پاسورډ حتمي دی" />
+                    <MudLocalizedTextField Label="پاسورډ تکرار" InputType="InputType.Password" />
+                    <MudLocalizedSelect Label="نظارت ډول">
+                        <MudSelectItem Value="1">انټري او راپور</MudSelectItem>
+                        <MudSelectItem Value="2">یوازي راپور</MudSelectItem>
+                    </MudLocalizedSelect>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-3 bahij-nassim-regular">ثبت</MudButton>
                 </MudForm>
             </MudPaper> 
         </MudItem>
         <MudItem md="6" lg="6">
             <MudSimpleTable Hover="true">
-                <thead>
+                <thead class="bahij-nassim-bold">
                     <tr>
                         <th>شمېره</th>
                         <th>یوزر نوم</th>
@@ -23,18 +27,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="bahij-nassim-regular">
                         <td>1</td>
                         <td>Name</td>
                         <td>First Branch</td>
                         <td>
                             <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                                <MudMenuItem >
-                                    <span class="bahij-nassim-regular">تغیر</span>
-                                </MudMenuItem>
-                                <MudMenuItem >
-                                    <span class="bahij-nassim-regular">غیر فعال</span>
-                                </MudMenuItem>
+                                <MudMenuItem Class="bahij-nassim-regular">تغیر</MudMenuItem>
+                                <MudMenuItem Class="bahij-nassim-regular">غیر فعال</MudMenuItem>
                             </MudMenu>
                         </td>
                     </tr>

@@ -1,0 +1,18 @@
+﻿<MudRTLProvider RightToLeft>
+    <MudDialog>
+        <DialogContent>
+            <MudText><span class="bahij-nassim-regular">مطمئن یاست زده کوونکي له صنف څخه وباسئ؟</span></MudText>
+        </DialogContent>
+        <DialogActions>
+            <MudButton Class="bahij-nassim-regular" OnClick="Cancel" Variant="Variant.Filled" Color="Color.Primary">لغوه</MudButton>
+            <MudButton Class="bahij-nassim-regular" Color="Color.Error" Variant="Variant.Filled" OnClick="Submit">تائید</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudRTLProvider>
+@code{
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+    [Parameter]
+    public int? StudentId { get; set; }
+    void Submit() => MudDialog?.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog?.Cancel();
+}

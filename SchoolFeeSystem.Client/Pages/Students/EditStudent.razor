@@ -1,30 +1,39 @@
 ﻿@page "/editstudent"
 <MudPaper Class="pa-16 " Elevation="3">
     <MudText Typo="Typo.h4">
-        <span class="bahij-nassim-bold">د زده کوونکي معلومات تغیرول</span>
+        <span class="bahij-nassim-bold">د زده کوونکي د معلوماتو تغیر</span>
     </MudText>
     <MudForm>
         <MudGrid>
             <MudItem md="4">
-                <MudTextField T="string" Label="آیډي"/>
+                <MudLocalizedTextField Label="آیډي" Required RequiredError="د زده کوونکي آيډي نمبر" ReadOnly />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="نوم" />
+                <MudLocalizedTextField Label="اساس نمبر" />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="د پلار نوم" />
+                <MudLocalizedTextField Label="نوم" Required RequiredError="نوم حتمي دی " />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="د نیکه نوم" />
-            </MudItem>
-            <MudItem>
-                <MudTextField T="string" Label="تذکره " />
+                <MudLocalizedTextField Label="د پلار نوم" Required RequiredError="د پلار نوم حتمي دی " />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="موبایل شمېره " />
+                <MudLocalizedTextField Label="د نیکه نوم" />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="کورنۍ شمېره " />
+                <MudRadioGroup T="bool">
+                    <MudRadio Value="true" Color="Color.Primary">نارینه</MudRadio>
+                    <MudRadio Value="false" Color="Color.Secondary">ښځینه</MudRadio>
+                </MudRadioGroup>
+            </MudItem>
+            <MudItem md="4">
+                <MudLocalizedTextField Label="تذکره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudLocalizedTextField Label="موبایل شمېره " />
+            </MudItem>
+            <MudItem md="4">
+                <MudLocalizedTextField Label="کورنۍ شمېره " />
             </MudItem>
             <MudItem md="4" xs="12">
                 <MudFileUpload T="IBrowserFile" Accept=".jpg" FilesChanged="UploadFiles">

@@ -6,16 +6,19 @@
     <MudForm>
         <MudGrid>
             <MudItem md="4">
-                <MudTextField T="string" Label="آیډي"/>
+                <MudLocalizedTextField Label="آیډي" Required RequiredError="د زده کوونکي آيډي نمبر" ReadOnly/>
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="نوم" />
+                <MudLocalizedTextField Label="اساس نمبر"/>
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="د پلار نوم" />
+                <MudLocalizedTextField Label="نوم" Required RequiredError="نوم حتمي دی " />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="د نیکه نوم" />
+                <MudLocalizedTextField Label="د پلار نوم" Required RequiredError="د پلار نوم حتمي دی " />
+            </MudItem>
+            <MudItem md="4">
+                <MudLocalizedTextField Label="د نیکه نوم" />
             </MudItem>
             <MudItem md="4">
                 <MudRadioGroup T="bool">
@@ -24,13 +27,13 @@
                 </MudRadioGroup>
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="تذکره " />
+                <MudLocalizedTextField Label="تذکره " />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="موبایل شمېره " />
+                <MudLocalizedTextField Label="موبایل شمېره " />
             </MudItem>
             <MudItem md="4">
-                <MudTextField T="string" Label="کورنۍ شمېره " />
+                <MudLocalizedTextField Label="کورنۍ شمېره " />
             </MudItem>
             <MudItem md="4" xs="12">
                 <MudFileUpload T="IBrowserFile" Accept=".jpg" FilesChanged="UploadFiles">
@@ -46,42 +49,6 @@
                 </MudFileUpload>
             </MudItem>
         </MudGrid>
-        <MudPaper Class="my-8" Elevation="0">
-            <MudText Align="Align.Justify" Typo="Typo.h5">
-                <span class="bahij-nassim-bold">په مختلفو څانګو کي د زده کوونکي فیس</span>
-            </MudText>
-            <MudText Align="Align.Justify" Typo="Typo.body1">
-                <span class="bahij-nassim-bold">لومړی څانګه</span>
-            </MudText>
-            <MudSimpleTable Dense="true" Hover="true">
-                <thead class="bahij-nassim-bold">
-                    <tr>
-                        <th>د فیس ډول</th>
-                        <th>د تادیې مبلغ</th>
-                    </tr>
-                </thead>
-                <tbody class="bahij-nassim-regular">
-                    <tr>
-                        <td>عمومي فیس</td>
-                        <td>
-                            <MudNumericField T="int" Label="عمومي فیس" Variant="Variant.Text" Min="0" Max="10" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>جزایی فیس</td>
-                        <td>
-                            <MudNumericField T="int" Label="جزایی فیس" Variant="Variant.Text" Min="0" Max="10" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>د فعالیت فیس</td>
-                        <td>
-                            <MudNumericField T="int" Label="د فعالیت فیس" Variant="Variant.Text" Min="0" Max="10" />
-                        </td>
-                    </tr>
-                </tbody>
-            </MudSimpleTable>
-        </MudPaper>
         <MudPaper Class="my-8" Elevation="0">
             <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
         </MudPaper>

@@ -1,46 +1,45 @@
 ﻿@page "/codes"
-<MudContainer>
-    <MudGrid Class="justify-center">
-        <MudPaper Class="flex-initial d-flex py-8 pa-4 ma-2" Width="auto">
-            <MudForm>
-                <MudStack>
-                    <MudTextField T="string" Label="حساب نوم" Required="true" RequiredError="حصاب نوم حتمي دئ" />
-                    <MudSelect Dense="true" T="string" Label="څانګه" Variant="Variant.Filled">
-                        <MudSelectItem Value="@("لومړی څانګه")" />
-                        <MudSelectItem Value="@("دوهمه څانګه")" />
-                        <MudSelectItem Value="@("درېیمه څانګه")" />
-                    </MudSelect>
-                    <MudRadioGroup T="bool">
-                        <MudRadio Value="true" Color="Color.Primary">رسید</MudRadio>
-                        <MudRadio Value="false" Color="Color.Secondary">برد</MudRadio>
-                    </MudRadioGroup>
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
-                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2">لغوه</MudButton>
-                </MudStack>
-            </MudForm>
+<MudGrid Class="flex-initial d-flex py-8 pa-4 ma-2 justify-center">
+    <MudItem>
+        <MudForm>
+                <MudLocalizedTextField Label="حساب نوم" Required="true" RequiredError="حساب نوم حتمي دئ" />
+                <MudLocalizedSelect Label="څانګه">
+                    <MudSelectItem Value="0">لومړی څانګه</MudSelectItem>
+                    <MudSelectItem Value="1">دوهمه څانګه</MudSelectItem>
+                    <MudSelectItem Value="2">درېیمه څانګه</MudSelectItem>
+                </MudLocalizedSelect>
+                <MudRadioGroup T="int" Value="0">
+                    <MudRadio Value="0" Color="Color.Primary">رسید</MudRadio>
+                    <MudRadio Value="1" Color="Color.Secondary">برد</MudRadio>
+                </MudRadioGroup>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2">لغوه</MudButton>
 
-        </MudPaper>
-        <MudPaper Class="flex-initial d-flex py-8 pa-4 ma-2" Width="auto">
-            <MudSimpleTable Hover="true" Style="overflow-x: auto;" Elevation="0">
-                <thead class="bahij-nassim-bold">
-                    <tr>
-                        <th>شمېره</th>
-                        <th>حساب</th>
-                        <th>عملیه</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="bahij-nassim-regular">1</td>
-                        <td>
-                            <MudLink Href="#"><span class="bahij-nassim-regular">لومړی ټولګی</span></MudLink>
-                        </td>
-                        <td>
-                            <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><span class="bahij-nassim-regular">تغیر</span></MudButton>
-                        </td>
-                    </tr>
-                </tbody>
-            </MudSimpleTable>
-        </MudPaper>
-    </MudGrid>
-</MudContainer>
+        </MudForm>
+    </MudItem>
+
+    <MudItem>
+        <MudSimpleTable Hover="true" Style="overflow-x: auto;" Elevation="0">
+            <thead class="bahij-nassim-bold">
+                <tr>
+                    <th>شمېره</th>
+                    <th>حساب</th>
+                    <th>تادیې ډول</th>
+                    <th>څانګه</th>
+                    <th>عملیه</th>
+                </tr>
+            </thead>
+            <tbody class="bahij-nassim-regular">
+                <tr>
+                    <td>1</td>
+                    <td>لومړی ټولګی</td>
+                    <td>رسید/برد</td>
+                    <td>اوله څانګه</td>
+                    <td>
+                        <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><span class="bahij-nassim-regular">تغیر</span></MudButton>
+                    </td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+    </MudItem>
+</MudGrid>

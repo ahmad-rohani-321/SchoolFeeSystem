@@ -23,4 +23,8 @@
     <PackageReference Include="MudBlazor" Version="6.19.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

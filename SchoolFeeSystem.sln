@@ -5,10 +5,16 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Server", "SchoolFeeSystem.Server\SchoolFeeSystem.Server.csproj", "{F6E1D7E0-71A8-469A-9C04-C9EFFCE680EF}"
 	ProjectSection(ProjectDependencies) = postProject
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C} = {4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}
 		{7A96F997-4635-4938-8EFA-4D6E1712FB4D} = {7A96F997-4635-4938-8EFA-4D6E1712FB4D}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Client", "SchoolFeeSystem.Client\SchoolFeeSystem.Client.csproj", "{7A96F997-4635-4938-8EFA-4D6E1712FB4D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C} = {4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFeeSystem.Shared", "SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj", "{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +30,10 @@ Global
 		{7A96F997-4635-4938-8EFA-4D6E1712FB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A96F997-4635-4938-8EFA-4D6E1712FB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A96F997-4635-4938-8EFA-4D6E1712FB4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,53 @@
+﻿@using System.Net.Http.Json
+@inject HttpClient httpClient
+<MudRTLProvider RightToLeft>
+    <MudDialog>
+        <DialogContent>
+            <MudLocalizedSelect Text="ټولګۍ انتخاب کړۍ">
+                <MudSelectItem Value="0">لومړي ټولګۍ</MudSelectItem>
+                <MudSelectItem Value="0">دوهم ټولګۍ</MudSelectItem>
+                <MudSelectItem Value="0">درېیم ټولګۍ</MudSelectItem>
+                <MudSelectItem Value="0">څلورم ټولګۍ</MudSelectItem>
+            </MudLocalizedSelect>
+            <MudSimpleTable Hover="true" Style="overflow-x: auto;" Dense="true" Elevation="0">
+                <thead class="bahij-nassim-bold">
+                    <tr>
+                        <th>
+                            <MudCheckBox T="int" Value="0" />
+                        </th>
+                        <th>آیډي</th>
+                        <th>مکمل نوم</th>
+                        <th>د پلار نوم</th>
+                        <th>ټولګۍ</th>
+                        <th>فیس</th>
+                    </tr>
+                </thead>
+                <tbody class="bahij-nassim-regular">
+                    <tr>
+                        <td>
+                            <MudCheckBox T="int" Value="0" />
+                        </td>
+                        <td>123</td>
+                        <td>احمد روحاني</td>
+                        <td>حاجي صاحب</td>
+                        <td>اول</td>
+                        <td>
+                            <MudLocalizedNumericField/>
+                        </td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        </DialogContent>
+        <DialogActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit">ثبت</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudRTLProvider>
+@code {
+    DialogOptions closeButton = new DialogOptions() { CloseButton = true };
+
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+
+    void Submit() => MudDialog?.Close(DialogResult.Ok(true));
+
+}

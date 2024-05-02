@@ -1,2 +1,29 @@
 ﻿@page "/dailypayments"
-asdasdasd
+<MudForm>
+    <MudGrid>
+        <MudItem>
+            <MudLocalizedDatePicker ReadOnly Label="نېټه" @bind-Date="@Date" Class="bahij-nassim-regular"></MudLocalizedDatePicker>
+        </MudItem>
+        <MudItem>
+            <MudText Typo="Typo.body1" Class="bahij-nassim-regular">تادیې ډول</MudText>
+            <MudRadioGroup T="int" Class="bahij-nassim-regular">
+                <MudRadio Value="0" Color="Color.Primary">رسیدګي</MudRadio>
+                <MudRadio Value="1" Color="Color.Secondary">بردګي</MudRadio>
+            </MudRadioGroup>
+        </MudItem>
+    </MudGrid>
+    <MudGrid>
+        <MudItem>
+            <MudSelect T="int" Label="تادیې منبع" Class="bahij-nassim-regular">
+                <MudSelectItem Value="1">لومړی ډول</MudSelectItem>
+                <MudSelectItem Value="2">دوهم ډول</MudSelectItem>
+                <MudSelectItem Value="3">درېیم ډول</MudSelectItem>
+                <MudSelectItem Value="4">څلورم ډول</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem>
+            <MudNumericField T="int" Class="bahij-nassim-regular" Min="1" />
+        </MudItem>
+    </MudGrid>
+    <MudButton Variant="Variant.Filled" >ثبت</MudButton>
+</MudForm>

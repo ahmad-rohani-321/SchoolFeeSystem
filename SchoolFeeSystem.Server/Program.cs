@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using SchoolFeeSystem.Server;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,13 @@ builder.Services.AddRazorPages();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// sql server connection
+builder.Services.AddDbContext<MainDbContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnectionString")
+        )
+);
 
 var app = builder.Build();
 

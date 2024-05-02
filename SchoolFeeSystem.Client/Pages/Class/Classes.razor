@@ -5,44 +5,47 @@
             <MudPaper Class="pa-4">
                 <MudForm>
                     <MudStack>
-                        <MudTextField T="string" Label="ټولګۍ نوم" Required="true" RequiredError="ټولګۍ نوم حتمي دی" />
-                        <MudTextField T="string" Label="ټولګۍ وخت" />
-                        <MudSelect Dense="true" T="string" Label="څانګه" Variant="Variant.Filled">
-                            <MudSelectItem Value="@("لومړی څانګه")" />
-                            <MudSelectItem Value="@("دوهمه څانګه")" />
-                            <MudSelectItem Value="@("درېیمه څانګه")" />
-                        </MudSelect>
+                        <MudLocalizedTextField Label="ټولګۍ نوم" Required RequiredError="ټولګۍ نوم حتمي دی" />
+                        <MudLocalizedTextField Label="ټولګۍ وخت" />
+                        <MudLocalizedNumericField Label="ټولکۍ فیس" Min="0" />
+                        <MudLocalizedSelect Label="څانګه" >
+                            <MudSelectItem Value="1">لومړی څانګه</MudSelectItem>
+                            <MudSelectItem Value="2">دوهمه څانګه</MudSelectItem>
+                            <MudSelectItem Value="3">درېیمه څانګه</MudSelectItem>
+                        </MudLocalizedSelect>
                         <MudGrid>
                             <MudItem>
-                                <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+                                <MudButton Variant="Variant.Filled" Class="bahij-nassim-regular" Color="Color.Primary">ثبت</MudButton>
                             </MudItem>
                             <MudItem>
-                                <MudButton Variant="Variant.Filled" Color="Color.Secondary">لغوه</MudButton>
+                                <MudButton Variant="Variant.Filled" Class="bahij-nassim-regular" Color="Color.Secondary">لغوه</MudButton>
                             </MudItem>
                         </MudGrid>
                     </MudStack>
                 </MudForm>
-
             </MudPaper>
         </MudItem>
         <MudItem md="6" lg="6">
             <MudPaper Elevation="0">
-                <MudSimpleTable Hover="true" Style="overflow-x: auto;" Elevation="0">
+                <MudSimpleTable Hover Style="overflow-x: auto;" Elevation="0">
                     <thead class="bahij-nassim-bold">
                         <tr>
                             <th>شمېره</th>
                             <th>ټولګی</th>
+                            <th>فیس مبلغ</th>
                             <th>عملیه</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bahij-nassim-regular">
                         <tr>
-                            <td class="bahij-nassim-regular">1</td>
+                            <td>1</td>
+                            <td>لومړی ټولګی</td>
+                            <td>200</td>
                             <td>
-                                <MudLink Href="#"><span class="bahij-nassim-regular">لومړی ټولګی</span></MudLink>
-                            </td>
-                            <td>
-                                <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><span class="bahij-nassim-regular">تغیر</span></MudButton>
+                                <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                                    <MudMenuItem><span class="bahij-nassim-regular">تغیر</span></MudMenuItem>
+                                    <MudMenuItem Href="studentslist/15"><span class="bahij-nassim-regular">زده کوونکي</span></MudMenuItem>
+                                </MudMenu>
                             </td>
                         </tr>
                     </tbody>

@@ -1,10 +1,11 @@
 ﻿using MudBlazor;
 using System.Globalization;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
-namespace SchoolFeeSystem.Client
+namespace SchoolFeeSystem.Client.Generals
 {
-    public class MudLocalizedDatePicker : MudDatePicker
+    public class MudLocalizedDateRangePicker : MudDateRangePicker
     {
         protected override void OnInitialized()
         {

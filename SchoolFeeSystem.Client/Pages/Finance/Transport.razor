@@ -1,4 +1,4 @@
-﻿@page "/fees"
+﻿@page "/transport"
 @inject IDialogService DialogService
 <MudPaper Class="pa-5 ma-8" Elevation="3">
     <MudPaper Elevation="0">
@@ -8,7 +8,7 @@
                     <MudItem>
                         <MudLocalizedSelect Label="پلټني ډول">
                             <MudSelectItem Value="0">آیډی</MudSelectItem>
-                            <MudSelectItem Value="1" >نوم</MudSelectItem>
+                            <MudSelectItem Value="1">نوم</MudSelectItem>
                             <MudSelectItem Value="2">د پلار نوم</MudSelectItem>
                             <MudSelectItem Value="3">د نیکه نوم</MudSelectItem>
                             <MudSelectItem Value="4">موبایل</MudSelectItem>
@@ -17,7 +17,7 @@
                     </MudItem>
                 </MudItem>
                 <MudItem>
-                    <MudLocalizedTextField Label="پلټنه" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary"/>
+                    <MudLocalizedTextField Label="پلټنه" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" />
                 </MudItem>
                 <MudItem>
                     <MudButton Disabled="@_searchProcess" OnClick="SearchProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
@@ -50,9 +50,9 @@
                 <th>آیډي</th>
                 <th>مکمل نوم او د پلار نوم</th>
                 <th>ټولګۍ</th>
-                <th>د فیس اصلي مبلغ</th>
-                <th>د فیس اخیستل سوی مبلغ</th>
-                <th>د فیس پاته مبلغ</th>
+                <th>د ټرانسپورټ اصلي مبلغ</th>
+                <th>د ټرانسپورټ اخیستل سوی مبلغ</th>
+                <th>د ټرانسپورټ پاته مبلغ</th>
             </tr>
         </thead>
         <tbody class="bahij-nassim-regular">
