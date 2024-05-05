@@ -1,5 +1,5 @@
-﻿namespace SchoolFeeSystem.Client;
-
+﻿using SchoolFeeSystem.Client.Entities;
+namespace SchoolFeeSystem.Client;
 public interface IStudents
 {
     IEnumerable<Student> GetTenStudents();

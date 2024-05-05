@@ -2,18 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>disabled</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Pages\BranchesAndUsers\Users.razor.cs" />
-    <Compile Remove="Pages\Students\NewStudent.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\BranchesAndUsers\Users.razor.cs" />
-    <None Include="Pages\Students\NewStudent.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>

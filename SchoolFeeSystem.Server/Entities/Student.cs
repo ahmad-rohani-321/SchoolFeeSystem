@@ -6,6 +6,7 @@ namespace SchoolFeeSystem.Server.Entities
         [Key]
         public int Id { get; set; }
         public string UnitqueKey { get; set; }
+        public int RegNo { get; set; }
         public string FirstName { get; set; }
         public string FatherName { get; set; }
         public string GrandFatherName { get; set; }

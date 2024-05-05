@@ -1,4 +1,6 @@
 ﻿
+using SchoolFeeSystem.Client.Entities;
+
 namespace SchoolFeeSystem.Client;
 
 public class Students : IStudents

@@ -1,42 +1,60 @@
 ﻿@page "/newstudent"
+@inject IStudents Student
 <MudPaper Class="pa-16 " Elevation="3">
     <MudText Typo="Typo.h4">
         <span class="bahij-nassim-bold">نوی زده کوونکی</span>
     </MudText>
-    <MudForm>
+    <MudForm Model="student">
         <MudGrid>
             <MudItem md="4">
-                <MudLocalizedTextField Label="آیډي" Required RequiredError="د زده کوونکي آيډي نمبر" ReadOnly/>
+                <MudLocalizedTextField Label="آیډي" Required @bind-Value="student.UnitqueKey" RequiredError="د زده کوونکي آيډي نمبر" ReadOnly/>
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="اساس نمبر"/>
+                <MudLocalizedNumericField @bind-Value="student.RegNo" Label="اساس نمبر"/>
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="نوم" Required RequiredError="نوم حتمي دی " />
+                <MudLocalizedTextField Label="نوم" @bind-Value="student.FirstName" Required RequiredError="نوم حتمي دی " />
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="د پلار نوم" Required RequiredError="د پلار نوم حتمي دی " />
+                <MudLocalizedTextField Label="د پلار نوم" @bind-Value="student.FatherName" Required RequiredError="د پلار نوم حتمي دی " />
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="د نیکه نوم" />
+                <MudGrid>
+                    <MudLocalizedDatePicker Label="د زېږېدو نېټه" @bind-value="_dob" />
+                </MudGrid>
             </MudItem>
             <MudItem md="4">
-                <MudRadioGroup T="bool">
+                <MudLocalizedTextField Label="د نیکه نوم" @bind-Value="student.GrandFatherName" />
+            </MudItem>
+            <MudItem md="4">
+                <MudRadioGroup T="bool" @bind-Value="student.Gender">
                     <MudRadio Value="true" Color="Color.Primary">نارینه</MudRadio>
                     <MudRadio Value="false" Color="Color.Secondary">ښځینه</MudRadio>
                 </MudRadioGroup>
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="تذکره " />
+                <MudLocalizedTextField Label="تذکره " @bind-Value="student.TazkiraNo" />
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="موبایل شمېره " />
+                <MudSelect Label="د ویني ګروپ " @bind-Value="student.BloodGroup">
+                    <MudSelectItem Value="@("A+")"/>
+                    <MudSelectItem Value="@("A-")"/>
+                    <MudSelectItem Value="@("B+")"/>
+                    <MudSelectItem Value="@("B-")"/>
+                    <MudSelectItem Value="@("O+")"/>
+                    <MudSelectItem Value="@("O-")"/>
+                    <MudSelectItem Value="@("AB+")"/>
+                    <MudSelectItem Value="@("AB-")"/>
+                </MudSelect>
             </MudItem>
             <MudItem md="4">
-                <MudLocalizedTextField Label="کورنۍ شمېره " />
+                <MudLocalizedTextField Label="موبایل شمېره " @bind-Value="student.PersonalPhone" />
+            </MudItem>
+            <MudItem md="4">
+                <MudLocalizedTextField Label="کورنۍ شمېره " @bind-Value="student.ParentPhone" />
             </MudItem>
             <MudItem md="4" xs="12">
-                <MudFileUpload T="IBrowserFile" Accept=".jpg" FilesChanged="UploadFiles">
+                <MudFileUpload T="IBrowserFile" Accept=".jpg">
                     <ButtonTemplate>
                         <MudButton HtmlTag="label"
                                    Variant="Variant.Filled"
@@ -54,12 +72,7 @@
         </MudPaper>
     </MudForm>
 </MudPaper>
-
 @code{
-    IList<IBrowserFile> files = new List<IBrowserFile>();
-
-    private void UploadFiles(IBrowserFile file)
-    {
-        files.Add(file);
-    }
+    private Entities.Student student = new();
+    private DateTime _dob = DateTime.Now.AddYears(-20);
 }
