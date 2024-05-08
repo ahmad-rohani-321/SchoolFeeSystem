@@ -23,7 +23,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj" />
-    <ProjectReference Include="..\shortid\shortid.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="shortid">
+      <HintPath>bin\shortid.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

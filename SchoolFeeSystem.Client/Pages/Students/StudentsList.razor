@@ -1,22 +1,26 @@
 ﻿@page "/students"
 @inject IDialogService DialogService
+@inject NavigationManager Navigation
+@inject IStudents Students
 <MudStack Class="pa-6">
     <MudPaper Class="pa-3">
         <MudForm>
             <MudGrid>
                 <MudItem>
-                    <MudSelect T="string" Label="پلټني ډول" Variant="Variant.Text" Margin="Margin.Dense">
-                        <MudSelectItem Value="@("آیډی")" />
-                        <MudSelectItem Value="@("نوم")" />
-                        <MudSelectItem Value="@("د پلار نوم")" />
-                        <MudSelectItem Value="@("د نیکه نوم")" />
-                        <MudSelectItem Value="@("موبایل")" />
-                        <MudSelectItem Value="@("تذکره")" />
-                    </MudSelect>
+                    <MudLocalizedSelect Label="پلټني ډول" @bind-Value="searchType">
+                        <MudSelectItem Value="0">آیډی</MudSelectItem>
+                        <MudSelectItem Value="1">نوم</MudSelectItem>
+                        <MudSelectItem Value="2">د پلار نوم</MudSelectItem>
+                        <MudSelectItem Value="3">د نیکه نوم</MudSelectItem>
+                        <MudSelectItem Value="4">موبایل</MudSelectItem>
+                        <MudSelectItem Value="5">تذکره</MudSelectItem>
+                        <MudSelectItem Value="6">اساس نمبر</MudSelectItem>
+                        <MudSelectItem Value="7">ولدینو موبایل شمېره</MudSelectItem>
+                    </MudLocalizedSelect>
                 </MudItem>
 
                 <MudItem>
-                    <MudTextField T="string" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
+                    <MudLocalizedTextField @bind-Value="keywords" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
                 </MudItem>
                 <MudItem>
                     <MudButton Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
@@ -38,44 +42,50 @@
         </MudForm>
     </MudPaper>
     <MudPaper Class="pa-3">
-        <MudSimpleTable Hover="true" Style="overflow-x: auto;" Dense="true" Elevation="0">
-            <thead class="bahij-nassim-bold">
-                <tr>
-                    <th>آیډي</th>
-                    <th>مکمل نوم</th>
-                    <th>د پلار نوم</th>
-                    <th>د نیکه نوم</th>
-                    <th>جنسیت</th>
-                    <th>تذکره</th>
-                    <th>موبایل شمېره</th>
-                    <th>عملیه</th>
-                </tr>
-            </thead>
-            <tbody class="bahij-nassim-regular">
-                <tr>
-                    <td>123</td>
-                    <td>
-                        <MudLink Href="/editstudent">
-                            <span class="bahij-nassim-regular">احمد روحاني</span>
-                        </MudLink>
-                    </td>
-                    <td>حاجي صاحب</td>
-                    <td>حاجي اغا</td>
-                    <td>نارینه</td>
-                    <td>456-456-456</td>
-                    <td>070000000</td>
-                    <td>
-                        <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                            <MudMenuItem Href="/editstudent">
-                                <span class="bahij-nassim-regular">تغیر</span>
-                            </MudMenuItem>
-                            <MudMenuItem OnClick="ShowDiaog">
-                                <span class="bahij-nassim-regular">غیر فعال</span>
-                            </MudMenuItem>
-                        </MudMenu>
-                    </td>
-                </tr>
-            </tbody>
-        </MudSimpleTable>
+
+        <MudTable Dense Items="@students" Hover="true" Breakpoint="Breakpoint.Sm" Loading="_loading" LoadingProgressColor="Color.Info">
+            <HeaderContent>
+                <MudTh>آیډي</MudTh>
+                <MudTh>اساس</MudTh>
+                <MudTh>مکمل نوم</MudTh>
+                <MudTh>د پلار نوم</MudTh>
+                <MudTh>د نیکه نوم</MudTh>
+                <MudTh>جنسیت</MudTh>
+                <MudTh>تذکره</MudTh>
+                <MudTh>موبایل شمېره</MudTh>
+                <MudTh>والیدینو موبایل شمېره</MudTh>
+                <MudTh>عملیه</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="آیډي">@context.UnitqueKey</MudTd>
+                <MudTd DataLabel="اساس">@context.RegNo</MudTd>
+                <MudTd DataLabel="مکمل نوم">@context.FirstName</MudTd>
+                <MudTd DataLabel="د پلار نوم">@context.FatherName</MudTd>
+                <MudTd DataLabel="د نیکه نوم">@context.GrandFatherName</MudTd>
+                <MudTd DataLabel="جنسیت">
+                    @GetGender(context.Gender)
+                </MudTd>
+                <MudTd DataLabel="تذکره">@context.TazkiraNo</MudTd>
+                <MudTd DataLabel="موبایل شمېره">@context.PersonalPhone</MudTd>
+                <MudTd DataLabel="والیدینو موبایل شمېره">@context.ParentPhone</MudTd>
+                <MudTd DataLabel="عملیه">
+                    <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                        <MudMenuItem OnClick="@(() => NavigateTo(context.Id))">
+                            <span class="bahij-nassim-regular">تغیر</span>
+                        </MudMenuItem>
+                        <MudMenuItem OnClick="@(() => ShowDiaog(context.Id))">
+                            <span class="bahij-nassim-regular">غیر فعال</span>
+                        </MudMenuItem>
+                    </MudMenu>
+                </MudTd>
+            </RowTemplate>
+            <NoRecordsContent>
+                <MudText>زده کوونکی پیدا نه سو</MudText>
+            </NoRecordsContent>
+            <LoadingContent>
+                <MudText>انتظار سئ...</MudText>
+            </LoadingContent>
+        </MudTable>
+
     </MudPaper>
 </MudStack>

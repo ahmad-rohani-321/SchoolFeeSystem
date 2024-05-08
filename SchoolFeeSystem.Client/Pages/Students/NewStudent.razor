@@ -1,10 +1,12 @@
 ﻿@page "/newstudent"
+@using SchoolFeeSystem.Shared
 @inject IStudents Student
+@inject ISnackbar Snackbar
 <MudPaper Class="pa-16 " Elevation="3">
     <MudText Typo="Typo.h4">
         <span class="bahij-nassim-bold">نوی زده کوونکی</span>
     </MudText>
-    <MudForm Model="student">
+    <MudForm Model="student" @ref="form">
         <MudGrid>
             <MudItem md="4">
                 <MudLocalizedTextField Label="آیډي" Required @bind-Value="student.UnitqueKey" RequiredError="د زده کوونکي آيډي نمبر" ReadOnly/>
@@ -68,11 +70,38 @@
             </MudItem>
         </MudGrid>
         <MudPaper Class="my-8" Elevation="0">
-            <MudButton Variant="Variant.Filled" Color="Color.Primary">ثبت</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="_processing" OnClick="OnSubmitForm">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">ثبت</MudText>
+                }
+                else
+                {
+                    <MudText>ثبت</MudText>
+                }
+            </MudButton>
         </MudPaper>
     </MudForm>
 </MudPaper>
 @code{
     private Entities.Student student = new();
     private DateTime _dob = DateTime.Now.AddYears(-20);
+    MudForm form;
+    async Task OnSubmitForm()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            _processing = true;
+            var added = await Student.AddStudent(student);
+            Snackbar.Add(
+                added.IsSuccess ? added.Message : "زده کوونکی نه سو اضافه", 
+                added.IsSuccess ? Severity.Success : Severity.Error);
+            await form.ResetAsync();
+            _processing = false;
+        }
+    }
+    private bool _processing = false;
+
 }

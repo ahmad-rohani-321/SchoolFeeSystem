@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolFeeSystem.Server;
 
@@ -11,9 +12,11 @@ using SchoolFeeSystem.Server;
 namespace SchoolFeeSystem.Server.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240505072028_SecondMigration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,25 +24,6 @@ namespace SchoolFeeSystem.Server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("SchoolFeeSystem.Server.Entities.Branch", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Branches");
-                });
 
             modelBuilder.Entity("SchoolFeeSystem.Server.Entities.Class", b =>
                 {
@@ -49,11 +33,8 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BranchId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClassTiming")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<TimeOnly>("ClassTiming")
+                        .HasColumnType("time");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -72,8 +53,6 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BranchId");
-
                     b.ToTable("Class");
                 });
 
@@ -90,9 +69,6 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     b.Property<DateTime>("EntranceDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IdDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<int>("StudentFee")
                         .HasColumnType("int");
@@ -272,17 +248,6 @@ namespace SchoolFeeSystem.Server.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("StudentIdCard");
-                });
-
-            modelBuilder.Entity("SchoolFeeSystem.Server.Entities.Class", b =>
-                {
-                    b.HasOne("SchoolFeeSystem.Server.Entities.Branch", "Branch")
-                        .WithMany()
-                        .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Branch");
                 });
 
             modelBuilder.Entity("SchoolFeeSystem.Server.Entities.ClassStudents", b =>

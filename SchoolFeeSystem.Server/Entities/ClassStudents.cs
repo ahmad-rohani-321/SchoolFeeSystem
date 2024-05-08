@@ -9,6 +9,7 @@ namespace SchoolFeeSystem.Server.Entities
         public int StudentId { get; set;}
         public int ClassId { get; set;}
         public int StudentFee { get; set; }
+        public bool IdDeleted { get; set; } = false;
         [ForeignKey(nameof(StudentId))]
         public Student Student { get; set; }
         [ForeignKey(nameof(ClassId))]

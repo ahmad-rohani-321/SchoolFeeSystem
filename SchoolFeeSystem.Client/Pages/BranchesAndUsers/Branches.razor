@@ -1,38 +1,42 @@
 ﻿@page "/branches"
-<MudForm >
+@inject IBranch Branch
+@inject ISnackbar Snackbar
+<MudForm @ref="branch" Model="model">
     <MudGrid>
         <MudItem>
-            <MudLocalizedTextField Label="څانګي نوم" />
+            <MudLocalizedTextField @bind-Value="model.Name" Label="څانګي نوم" Required RequiredError="څانګي نوم حتمي دی" />
         </MudItem>
         <MudItem>
-            <MudLocalizedTextField Label="ادرس"/>
+            <MudLocalizedTextField @bind-Value="model.Address" Label="ادرس" />
         </MudItem>
         <MudItem>
-            <MudButton Class="bahij-nassim-regular" Color="Color.Primary" Variant="Variant.Filled">ثبت</MudButton>
+            <MudButton Class="bahij-nassim-regular" Disabled="_processing" Color="Color.Primary" Variant="Variant.Filled" OnClick="OnSubmitForm">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">ثبت</MudText>
+                }
+                else
+                {
+                    <MudText>ثبت</MudText>
+                }
+            </MudButton>
         </MudItem>
     </MudGrid>
 </MudForm>
-<MudSimpleTable Class="my-5" Elevation="3">
-    <thead class="bahij-nassim-bold">
-        <tr>
-            <th>شمېره</th>
-            <th>څانګي نوم</th>
-            <th>ادرس</th>
-            <th>عملیه</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="bahij-nassim-regular">
-            <td>1</td>
-            <td>لومړی څانګه</td>
-            <td>کندهار</td>
-            <td>
-                <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                    <MudMenuItem Class="bahij-nassim-regular">تغیر</MudMenuItem>
-                    <MudMenuItem Class="bahij-nassim-regular">غیر فعال</MudMenuItem>
-                    <MudMenuItem Class="bahij-nassim-regular">یوزران</MudMenuItem>
-                </MudMenu>
-            </td>
-        </tr>
-    </tbody>
-</MudSimpleTable>
+<MudTable Items="branches" Dense Hover Loading="_loading">
+    <HeaderContent>
+        <MudTh>شمېره</MudTh>
+        <MudTh>څانګي نوم</MudTh>
+        <MudTh>ادرس</MudTh>
+        <MudTh>عملیه</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="شمېره">@context.Id</MudTd>
+        <MudTd DataLabel="څانګي نوم">@context.Name</MudTd>
+        <MudTd DataLabel="ادرس">@context.Address</MudTd>
+        <MudTd DataLabel="عملیه">
+            <MudButton Class="bahij-nassim-regular" Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => GetStudent(context.Id))">تغیرول</MudButton>
+        </MudTd>
+    </RowTemplate>
+</MudTable>

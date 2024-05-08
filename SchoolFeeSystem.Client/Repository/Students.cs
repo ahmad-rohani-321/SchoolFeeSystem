@@ -1,27 +1,47 @@
-﻿
-using SchoolFeeSystem.Client.Entities;
+﻿using SchoolFeeSystem.Client.Entities;
+using SchoolFeeSystem.Shared;
+using System.Net.Http.Json;
 
-namespace SchoolFeeSystem.Client;
-
+namespace SchoolFeeSystem.Client.Repository;
 public class Students : IStudents
 {
-    public Student AddStudent(Student student)
+    private readonly HttpClient _httpClient;
+    public Students(HttpClient httpClient)
     {
-        throw new NotImplementedException();
+        _httpClient = httpClient;
     }
 
-    public IEnumerable<Student> GetTenStudents()
+    public async Task<Response<Student>> AddStudent(Student student)
     {
-        throw new NotImplementedException();
+        var request = await _httpClient.PostAsJsonAsync("api/student", student);
+        var result = await request.Content.ReadFromJsonAsync<Response<Student>>();
+        return result;
     }
 
-    public void InActiveStudent(int id, bool active)
+    public async Task<Response<Student>> GetStudent(int id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<Response<Student>>($"api/student/{id}");
     }
 
-    public Student UpdateStudent(Student student)
+    public async Task<IList<Student>> GetTenStudents()
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<List<Student>>("api/student");
+    }
+
+    public async Task<bool> InActiveStudent(int id, bool active)
+    {
+        HttpResponseMessage request = await _httpClient.PutAsJsonAsync($"api/student/{id}/{active}", active);
+        return await request.Content.ReadFromJsonAsync<bool>();
+    }
+
+    public async Task<IList<Student>> SearchStudent(string keywords, int type)
+    {
+        return await _httpClient.GetFromJsonAsync<List<Student>>($"api/student/{type}/{keywords}");
+    }
+
+    public async Task<Response<Student>> UpdateStudent(Student student, int id)
+    {
+        var request = await _httpClient.PutAsJsonAsync($"api/student/{id}", student);
+        return await request.Content.ReadFromJsonAsync<Response<Student>>();
     }
 }

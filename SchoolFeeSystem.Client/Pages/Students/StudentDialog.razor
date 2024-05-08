@@ -1,17 +1,26 @@
-﻿<MudRTLProvider  RightToLeft="true">
+﻿@inject IStudents Students
+<MudRTLProvider  RightToLeft="true">
     <MudDialog>
         <DialogContent>
             <MudText><span class="bahij-nassim-regular">غواړی زده کوونکی غیر فعال کړئ؟</span></MudText>
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="Cancel"><span class="bahij-nassim-bold">لغوه</span></MudButton>
-            <MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="Submit"><span class="bahij-nassim-bold">تائید</span></MudButton>
+            <MudButton Disabled="_loading" Color="Color.Error" Variant="Variant.Filled" OnClick="Submit"><span class="bahij-nassim-bold">تائید</span></MudButton>
         </DialogActions>
     </MudDialog>
 </MudRTLProvider>
 @code {
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-
-    void Submit() => MudDialog?.Close(DialogResult.Ok(true));
+    [Parameter]
+    public int Id { get; set; }
+    private bool _loading = false;
+    private async void Submit()
+    {
+        _loading = true;
+        bool activation = await Students.InActiveStudent(Id, false);
+        _loading = false;
+        MudDialog?.Close(DialogResult.Ok(true));
+    }
     void Cancel() => MudDialog?.Cancel();
 }

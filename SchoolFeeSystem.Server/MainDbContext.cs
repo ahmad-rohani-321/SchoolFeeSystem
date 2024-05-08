@@ -18,6 +18,7 @@ namespace SchoolFeeSystem.Server
         }
         public DbSet<Student> Student { get; set; }
         public DbSet<Class> Class { get; set; }
+        public DbSet<Branch> Branches { get; set; }
         public DbSet<ClassStudents> ClassStudents { get; set; }
         public DbSet<StudentIdCard> StudentIdCard { get; set; }
         public DbSet<FeesCollection> FeesCollection { get; set; }

@@ -1,21 +1,36 @@
 ﻿@page "/classes"
+@inject IClass Class
+@inject IBranch Branch
+@inject ISnackbar Snackbar
+@inject NavigationManager Navigation
 <MudPaper Class="ma-16" Elevation="0">
     <MudGrid >
         <MudItem md="6" lg="6">
             <MudPaper Class="pa-4">
-                <MudForm>
+                <MudForm @ref="form" Model="model">
                     <MudStack>
-                        <MudLocalizedTextField Label="ټولګۍ نوم" Required RequiredError="ټولګۍ نوم حتمي دی" />
-                        <MudLocalizedTextField Label="ټولګۍ وخت" />
-                        <MudLocalizedNumericField Label="ټولکۍ فیس" Min="0" />
-                        <MudLocalizedSelect Label="څانګه" >
-                            <MudSelectItem Value="1">لومړی څانګه</MudSelectItem>
-                            <MudSelectItem Value="2">دوهمه څانګه</MudSelectItem>
-                            <MudSelectItem Value="3">درېیمه څانګه</MudSelectItem>
+                        <MudLocalizedTextField @bind-Value="model.Name" Label="ټولګۍ نوم" Required RequiredError="ټولګۍ نوم حتمي دی" />
+                        <MudLocalizedTextField @bind-Value="model.ClassTiming" Label="ټولګۍ وخت" />
+                        <MudLocalizedNumericField @bind-Value="model.FeeAmount" Label="ټولکۍ فیس" Min="0" />
+                        <MudLocalizedSelect @bind-Value="model.BranchId" Label="څانګه">
+                            @foreach (var item in branches)
+                            {
+                                <MudSelectItem Value="item.Id">@item.Name</MudSelectItem>
+                            } 
                         </MudLocalizedSelect>
                         <MudGrid>
                             <MudItem>
-                                <MudButton Variant="Variant.Filled" Class="bahij-nassim-regular" Color="Color.Primary">ثبت</MudButton>
+                                <MudButton Variant="Variant.Filled" Disabled="_processing" Class="bahij-nassim-regular" OnClick="OnSubmit" Color="Color.Primary">
+                                    @if (_processing)
+                                    {
+                                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                                        <MudText Class="ms-2">ثبت</MudText>
+                                    }
+                                    else
+                                    {
+                                        <MudText>ثبت</MudText>
+                                    }
+                                </MudButton>
                             </MudItem>
                             <MudItem>
                                 <MudButton Variant="Variant.Filled" Class="bahij-nassim-regular" Color="Color.Secondary">لغوه</MudButton>
@@ -27,29 +42,27 @@
         </MudItem>
         <MudItem md="6" lg="6">
             <MudPaper Elevation="0">
-                <MudSimpleTable Hover Style="overflow-x: auto;" Elevation="0">
-                    <thead class="bahij-nassim-bold">
-                        <tr>
-                            <th>شمېره</th>
-                            <th>ټولګی</th>
-                            <th>فیس مبلغ</th>
-                            <th>عملیه</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bahij-nassim-regular">
-                        <tr>
-                            <td>1</td>
-                            <td>لومړی ټولګی</td>
-                            <td>200</td>
-                            <td>
-                                <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                                    <MudMenuItem><span class="bahij-nassim-regular">تغیر</span></MudMenuItem>
-                                    <MudMenuItem Href="studentslist/15"><span class="bahij-nassim-regular">زده کوونکي</span></MudMenuItem>
-                                </MudMenu>
-                            </td>
-                        </tr>
-                    </tbody>
-                </MudSimpleTable>
+                <MudTable Hover Items="classes" Loading="_loading" Dense>
+                    <HeaderContent >
+                        <MudTh>شمېره</MudTh>
+                        <MudTh>ټولګی</MudTh>
+                        <MudTh>څانګه</MudTh>
+                        <MudTh>فیس مبلغ</MudTh>
+                        <MudTh>عملیه</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="شمېره">@context.Id</MudTd>
+                        <MudTd DataLabel="ټولګی">@context.Name</MudTd>
+                        <MudTd DataLabel="څانګه">@context.Branch.Name</MudTd>
+                        <MudTd DataLabel="فیس مبلغ">@context.FeeAmount</MudTd>
+                        <td>
+                            <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                                <MudMenuItem OnClick="(() => OnEdit(context.Id))"><span class="bahij-nassim-regular">تغیر</span></MudMenuItem>
+                                <MudMenuItem OnClick="(() => OnCheckStudents(context.Id))"><span class="bahij-nassim-regular">زده کوونکي</span></MudMenuItem>
+                            </MudMenu>
+                        </td>
+                    </RowTemplate>
+                </MudTable>
             </MudPaper>
         </MudItem>
     </MudGrid>
