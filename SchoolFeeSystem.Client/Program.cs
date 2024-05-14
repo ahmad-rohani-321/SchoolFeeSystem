@@ -14,4 +14,5 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IStudents, Students>();
 builder.Services.AddScoped<IBranch, Branch>();
 builder.Services.AddScoped<IClass, Class>();
+builder.Services.AddScoped<IClassStudents, ClassStudents>();
 await builder.Build().RunAsync();

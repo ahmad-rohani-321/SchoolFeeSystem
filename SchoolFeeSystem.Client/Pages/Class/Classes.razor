@@ -3,7 +3,7 @@
 @inject IBranch Branch
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
-<MudPaper Class="ma-16" Elevation="0">
+<MudPaper Class="ma-8" Elevation="0">
     <MudGrid >
         <MudItem md="6" lg="6">
             <MudPaper Class="pa-4">
@@ -47,14 +47,16 @@
                         <MudTh>شمېره</MudTh>
                         <MudTh>ټولګی</MudTh>
                         <MudTh>څانګه</MudTh>
-                        <MudTh>فیس مبلغ</MudTh>
+                        <MudTh>وخت</MudTh>
+                        <MudTh>فیس</MudTh>
                         <MudTh>عملیه</MudTh>
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd DataLabel="شمېره">@context.Id</MudTd>
                         <MudTd DataLabel="ټولګی">@context.Name</MudTd>
                         <MudTd DataLabel="څانګه">@context.Branch.Name</MudTd>
-                        <MudTd DataLabel="فیس مبلغ">@context.FeeAmount</MudTd>
+                        <MudTd DataLabel="وخت">@context.ClassTiming</MudTd>
+                        <MudTd DataLabel="فیس">@context.FeeAmount</MudTd>
                         <td>
                             <MudMenu Icon="@Icons.Material.Filled.MoreVert">
                                 <MudMenuItem OnClick="(() => OnEdit(context.Id))"><span class="bahij-nassim-regular">تغیر</span></MudMenuItem>

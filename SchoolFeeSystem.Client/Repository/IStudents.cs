@@ -1,7 +1,6 @@
 ﻿using MudBlazor;
 using SchoolFeeSystem.Client.Entities;
 using SchoolFeeSystem.Shared;
-using static MudBlazor.Colors;
 namespace SchoolFeeSystem.Client.Repository;
 public interface IStudents
 {
@@ -20,7 +19,6 @@ public interface IStudents
     /// 6"> اساس نمبر
     /// 7"> ولدینو موبایل شمېره
     /// </summary>
-    Task<IList<Student>> SearchStudent(string keywords, int type);
-    Task<Response<Student>> GetStudent(int id);
-    
+    Task<List<Student>> SearchStudent(string keywords, int type);
+    Task<Response<Student>> GetStudent(int? id);
 }

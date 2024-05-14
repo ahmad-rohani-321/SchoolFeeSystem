@@ -18,12 +18,11 @@
                         <MudSelectItem Value="7">ولدینو موبایل شمېره</MudSelectItem>
                     </MudLocalizedSelect>
                 </MudItem>
-
                 <MudItem>
                     <MudLocalizedTextField @bind-Value="keywords" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
                 </MudItem>
                 <MudItem>
-                    <MudButton Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                    <MudButton Disabled="@_processing" OnClick="SearchingStudent" Variant="Variant.Filled" Color="Color.Primary">
                         @if (_processing)
                         {
                             <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -43,7 +42,7 @@
     </MudPaper>
     <MudPaper Class="pa-3">
 
-        <MudTable Dense Items="@students" Hover="true" Breakpoint="Breakpoint.Sm" Loading="_loading" LoadingProgressColor="Color.Info">
+        <MudTable Dense Items="@students" Hover Breakpoint="Breakpoint.Sm" Loading="_loading" LoadingProgressColor="Color.Info">
             <HeaderContent>
                 <MudTh>آیډي</MudTh>
                 <MudTh>اساس</MudTh>
@@ -52,6 +51,7 @@
                 <MudTh>د نیکه نوم</MudTh>
                 <MudTh>جنسیت</MudTh>
                 <MudTh>تذکره</MudTh>
+                <MudTh>ټرانسپورټ فیس</MudTh>
                 <MudTh>موبایل شمېره</MudTh>
                 <MudTh>والیدینو موبایل شمېره</MudTh>
                 <MudTh>عملیه</MudTh>
@@ -66,6 +66,7 @@
                     @GetGender(context.Gender)
                 </MudTd>
                 <MudTd DataLabel="تذکره">@context.TazkiraNo</MudTd>
+                <MudTd DataLabel="ټرانسپورټ فیس">@context.TransportationFees</MudTd>
                 <MudTd DataLabel="موبایل شمېره">@context.PersonalPhone</MudTd>
                 <MudTd DataLabel="والیدینو موبایل شمېره">@context.ParentPhone</MudTd>
                 <MudTd DataLabel="عملیه">

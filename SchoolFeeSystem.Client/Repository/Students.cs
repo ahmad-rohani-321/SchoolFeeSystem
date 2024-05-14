@@ -18,7 +18,7 @@ public class Students : IStudents
         return result;
     }
 
-    public async Task<Response<Student>> GetStudent(int id)
+    public async Task<Response<Student>> GetStudent(int? id)
     {
         return await _httpClient.GetFromJsonAsync<Response<Student>>($"api/student/{id}");
     }
@@ -34,7 +34,7 @@ public class Students : IStudents
         return await request.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<IList<Student>> SearchStudent(string keywords, int type)
+    public async Task<List<Student>> SearchStudent(string keywords, int type)
     {
         return await _httpClient.GetFromJsonAsync<List<Student>>($"api/student/{type}/{keywords}");
     }

@@ -21,6 +21,7 @@ namespace SchoolFeeSystem.Client.Entities
         public string HomeAddress { get; set; }
         public string PersonalPhone { get; set; }
         public string ParentPhone { get; set; }
+        public int TransportationFees { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime CreationDate { get; set; } = DateTime.Now;
     }

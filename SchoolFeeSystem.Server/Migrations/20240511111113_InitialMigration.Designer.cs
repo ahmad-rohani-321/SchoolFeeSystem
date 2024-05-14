@@ -12,8 +12,8 @@ using SchoolFeeSystem.Server;
 namespace SchoolFeeSystem.Server.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240508062932_DescriptionRemovedFromBranch")]
-    partial class DescriptionRemovedFromBranch
+    [Migration("20240511111113_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

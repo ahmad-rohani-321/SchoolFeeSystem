@@ -55,6 +55,9 @@
             <MudItem md="4">
                 <MudLocalizedTextField Label="کورنۍ شمېره " @bind-Value="student.ParentPhone" />
             </MudItem>
+            <MudItem md="4">
+                <MudLocalizedNumericField Label="ټراسپورټ فیس " @bind-Value="student.TransportationFees" />
+            </MudItem>
             <MudItem md="4" xs="12">
                 <MudFileUpload T="IBrowserFile" Accept=".jpg">
                     <ButtonTemplate>
@@ -100,6 +103,7 @@
                 added.IsSuccess ? Severity.Success : Severity.Error);
             await form.ResetAsync();
             _processing = false;
+            StateHasChanged();
         }
     }
     private bool _processing = false;

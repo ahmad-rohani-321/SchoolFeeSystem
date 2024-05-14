@@ -5,25 +5,25 @@
 namespace SchoolFeeSystem.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class IsDeletedAddedToClassStudents : Migration
+    public partial class TransportationFeesAddToStudent : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IdDeleted",
-                table: "ClassStudents",
-                type: "bit",
+            migrationBuilder.AddColumn<int>(
+                name: "TransportationFees",
+                table: "Student",
+                type: "int",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IdDeleted",
-                table: "ClassStudents");
+                name: "TransportationFees",
+                table: "Student");
         }
     }
 }

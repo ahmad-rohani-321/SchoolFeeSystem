@@ -1,4 +1,5 @@
 ﻿using MudBlazor;
+using MudBlazor.Interfaces;
 using SchoolFeeSystem.Client.Entities;
 
 namespace SchoolFeeSystem.Client.Pages.BranchesAndUsers
@@ -23,6 +24,7 @@ namespace SchoolFeeSystem.Client.Pages.BranchesAndUsers
                 await branch.ResetAsync();
                 await ReloadBranches();
                 _processing = false;
+                StateHasChanged();
             }
             else if (branch.IsValid && model.Id != 0)
             {
@@ -34,6 +36,7 @@ namespace SchoolFeeSystem.Client.Pages.BranchesAndUsers
                 await branch.ResetAsync();
                 await ReloadBranches();
                 _processing = false;
+                StateHasChanged();
             }
         }
         private async void GetStudent(int id)

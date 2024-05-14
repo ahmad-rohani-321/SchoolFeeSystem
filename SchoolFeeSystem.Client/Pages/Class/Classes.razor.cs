@@ -1,6 +1,4 @@
 ﻿using MudBlazor;
-using System.Diagnostics.Contracts;
-
 namespace SchoolFeeSystem.Client.Pages.Class
 {
     public partial class Classes
@@ -13,8 +11,11 @@ namespace SchoolFeeSystem.Client.Pages.Class
         private bool _loading = false;
         protected override async Task OnInitializedAsync()
         {
-            branches = await Branch.GetAllBranches();
+            _loading = true;
+            branches.AddRange(await Branch.GetAllBranches());
             await ReloadClasses();
+            _loading = false;
+            StateHasChanged();
         }
         private async void OnSubmit()
         {
@@ -29,6 +30,7 @@ namespace SchoolFeeSystem.Client.Pages.Class
                 await form.ResetAsync();
                 await ReloadClasses();
                 _processing = false;
+                StateHasChanged();
             }
             else if (form.IsValid && model.Id != 0)
             {
@@ -40,13 +42,15 @@ namespace SchoolFeeSystem.Client.Pages.Class
                 await form.ResetAsync();
                 await ReloadClasses();
                 _processing = false;
+                StateHasChanged();
             }
         }
 
         private async Task ReloadClasses()
         {
+            classes.Clear();
             _loading = true;
-            classes = await Class.GetClasses();
+            classes.AddRange(await Class.GetClasses());
             _loading = false;
         }
 
@@ -57,11 +61,13 @@ namespace SchoolFeeSystem.Client.Pages.Class
             model.Name = c.Name;
             model.Description = c.Description;
             model.BranchId = c.BranchId;
+            model.ClassTiming = c.ClassTiming;
+            model.FeeAmount = c.FeeAmount;
             StateHasChanged();
         }
         private void OnCheckStudents(int id)
         {
-            Navigation.NavigateTo($"studentslist/{id}");
+            Navigation.NavigateTo($"classes/studentslist/{id}");
         }
     }
 }

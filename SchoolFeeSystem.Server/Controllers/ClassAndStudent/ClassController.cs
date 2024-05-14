@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SchoolFeeSystem.Client.Pages.Reports;
 using SchoolFeeSystem.Server.Entities;
 using SchoolFeeSystem.Shared;
 
@@ -20,7 +21,7 @@ namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
         {
             using (_context)
             {
-                return await _context.Class.Include("Branch").ToListAsync();
+                return await _context.Class.Include("Branch").Where(x => x.IsActive).ToListAsync();
             }
         }
         [HttpGet("{id}")]
@@ -47,7 +48,7 @@ namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
             }
         }
         [HttpPut]
-        public async Task<ActionResult<Class>> UpdateClass(Class clas)
+        public async Task<ActionResult<Response<Class>>> UpdateClass(Class clas)
         {
             using (_context)
             {
@@ -58,7 +59,13 @@ namespace SchoolFeeSystem.Server.Controllers.ClassAndStudent
                 c.FeeAmount = clas.FeeAmount;
                 c.Name = clas.Name;
                 await _context.SaveChangesAsync();
-                return Ok(clas);
+                var response = new Response<Class>()
+                {
+                    Data = c,
+                    IsSuccess = true,
+                    Message = "عملیه تکمیل سوه"
+                };
+                return Ok(response);
             }
         }
     }

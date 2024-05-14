@@ -192,6 +192,9 @@ namespace SchoolFeeSystem.Server.Migrations
                     b.Property<string>("TazkiraNo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TransportationFees")
+                        .HasColumnType("int");
+
                     b.Property<string>("UnitqueKey")
                         .HasColumnType("nvarchar(450)");
 

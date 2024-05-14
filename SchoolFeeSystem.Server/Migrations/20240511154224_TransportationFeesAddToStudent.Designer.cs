@@ -12,8 +12,8 @@ using SchoolFeeSystem.Server;
 namespace SchoolFeeSystem.Server.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240507180530_IsDeletedAddedToClassStudents")]
-    partial class IsDeletedAddedToClassStudents
+    [Migration("20240511154224_TransportationFeesAddToStudent")]
+    partial class TransportationFeesAddToStudent
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,6 @@ namespace SchoolFeeSystem.Server.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -197,6 +194,9 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     b.Property<string>("TazkiraNo")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TransportationFees")
+                        .HasColumnType("int");
 
                     b.Property<string>("UnitqueKey")
                         .HasColumnType("nvarchar(450)");

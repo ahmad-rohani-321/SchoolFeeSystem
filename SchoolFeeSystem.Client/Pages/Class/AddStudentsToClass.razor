@@ -1,0 +1,93 @@
+﻿@page "/classes/studentslist/add/{ClassId:int}"
+@inject NavigationManager Navigation
+@inject IClassStudents ClassStudents
+<MudPaper Class="pa-3">
+    <MudForm>
+        <MudGrid>
+            <MudItem>
+                <MudLocalizedSelect Label="پلټني ډول" @bind-Value="searchType">
+                    <MudSelectItem Value="0">آیډی</MudSelectItem>
+                    <MudSelectItem Value="1">نوم</MudSelectItem>
+                    <MudSelectItem Value="2">د پلار نوم</MudSelectItem>
+                    <MudSelectItem Value="3">د نیکه نوم</MudSelectItem>
+                    <MudSelectItem Value="4">موبایل</MudSelectItem>
+                    <MudSelectItem Value="5">تذکره</MudSelectItem>
+                    <MudSelectItem Value="6">اساس نمبر</MudSelectItem>
+                    <MudSelectItem Value="7">ولدینو موبایل شمېره</MudSelectItem>
+                </MudLocalizedSelect>
+            </MudItem>
+
+            <MudItem>
+                <MudLocalizedTextField @bind-Value="keywords" Label="پلټنه" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary" Margin="Margin.Dense" />
+            </MudItem>
+            <MudItem>
+                <MudButton Disabled="@_processing" Variant="Variant.Filled" Color="Color.Primary">
+                    @if (_processing)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">پلټنه</MudText>
+                    }
+                    else
+                    {
+                        <MudText>پلټنه</MudText>
+                    }
+                </MudButton>
+            </MudItem>
+            <MudItem>
+                <MudButton Href="/newstudent" Variant="Variant.Filled" Color="Color.Primary">نوی زده کوونکی</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
+<MudPaper Class="pa-3">
+
+    <MudTable Items="students" Hover Breakpoint="Breakpoint.Sm" Loading="_loading" LoadingProgressColor="Color.Info" MultiSelection SelectedItems="classStudentsToAdd" ReadOnly="false">
+        <HeaderContent>
+            <MudTh>آیډي</MudTh>
+            <MudTh>اساس</MudTh>
+            <MudTh>مکمل نوم</MudTh>
+            <MudTh>د پلار نوم</MudTh>
+            <MudTh>جنسیت</MudTh>
+            <MudTh>فیس</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="آیډي">@context.Student.UnitqueKey</MudTd>
+            <MudTd DataLabel="اساس">@context.Student.RegNo</MudTd>
+            <MudTd DataLabel="مکمل نوم">@context.Student.FirstName</MudTd>
+            <MudTd DataLabel="د پلار نوم">@context.Student.FatherName</MudTd>
+            <MudTd DataLabel="جنسیت">@GetGender(context.Student.Gender)</MudTd>
+            <MudTd DataLabel="فیس">@context.StudentFee</MudTd>
+        </RowTemplate>
+        <RowEditingTemplate>
+            <MudTd DataLabel="آیډي">@context.Student.UnitqueKey</MudTd>
+            <MudTd DataLabel="اساس">@context.Student.RegNo</MudTd>
+            <MudTd DataLabel="مکمل نوم">@context.Student.FirstName</MudTd>
+            <MudTd DataLabel="د پلار نوم">@context.Student.FatherName</MudTd>
+            <MudTd DataLabel="جنسیت">@GetGender(context.Student.Gender)</MudTd>
+            <MudTd DataLabel="فیس">
+                <MudLocalizedNumericField @bind-Value="context.StudentFee"  />
+            </MudTd>
+        </RowEditingTemplate>
+        <NoRecordsContent>
+            <MudText>لیست خالي دی</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>انتظار سئ...</MudText>
+        </LoadingContent>
+    </MudTable>
+
+</MudPaper>
+
+<MudPaper Elevation="0" Class="My-3"> 
+    <MudButton Variant="Variant.Filled" Disabled="_saving" Color="Color.Primary" OnClick="OnSubmit">
+        @if (_processing)
+        {
+            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+            <MudText Class="ms-2">ثبت</MudText>
+        }
+        else
+        {
+            <MudText>ثبت</MudText>
+        }
+    </MudButton>
+</MudPaper>

@@ -7,15 +7,15 @@ namespace SchoolFeeSystem.Client.Pages.Students
     {
         private string keywords;
         private int searchType = 0;
-        private IList<Entities.Student> students;
+        private List<Entities.Student> students = new List<Entities.Student>();
         private bool _processing = false;
         private bool _loading = false;
-        async void ProcessSomething()
+        async void SearchingStudent()
         {
             _processing = true;
             _loading = true;
             students.Clear();
-            students = await Students.SearchStudent(keywords, searchType);
+            students.AddRange(await Students.SearchStudent(keywords, searchType));
             _loading = false;
             _processing = false;
             StateHasChanged();
@@ -34,7 +34,9 @@ namespace SchoolFeeSystem.Client.Pages.Students
         }
         protected override async Task OnInitializedAsync()
         {
-            students = await Students.GetTenStudents();
+            _loading = true;
+            students.AddRange(await Students.GetTenStudents());
+            _loading = false;
         }
         private string GetGender(bool value)
         {

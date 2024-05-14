@@ -1,4 +1,4 @@
-﻿@page "/editstudent/{id}"
+﻿@page "/editstudent/{id:int}"
 @using SchoolFeeSystem.Shared
 @inject IStudents Student
 @inject ISnackbar Snackbar
@@ -55,6 +55,9 @@
             <MudItem md="4">
                 <MudLocalizedTextField Label="کورنۍ شمېره " @bind-Value="student.ParentPhone" />
             </MudItem>
+            <MudItem md="4">
+                <MudLocalizedNumericField Label="ټرانسپورټ فیس " @bind-Value="student.TransportationFees" />
+            </MudItem>
             <MudItem md="4" xs="12">
                 <MudFileUpload T="IBrowserFile" Accept=".jpg">
                     <ButtonTemplate>
@@ -86,13 +89,13 @@
 </MudPaper>
 @code {
     [Parameter]
-    public object id { get; set; }
+    public int id { get; set; }
     private Entities.Student student = new();
     MudForm form;
     private bool _processing = false;
     protected override async Task OnInitializedAsync()
     {
-        if (id != null)
+        if (id != 0)
         {
             var response = await Student.GetStudent(Convert.ToInt32(id));
             if (response.IsSuccess)
@@ -114,6 +117,7 @@
                 added.IsSuccess ? Severity.Success : Severity.Error);
             await form.ResetAsync();
             _processing = false;
+            StateHasChanged();
         }
     }
 

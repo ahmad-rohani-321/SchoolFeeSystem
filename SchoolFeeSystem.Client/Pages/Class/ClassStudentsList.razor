@@ -1,41 +1,66 @@
-﻿@page "/studentslist/{ClassId:int}"
+﻿@page "/classes/studentslist/{ClassId:int}"
 @inject IDialogService DialogService
+@inject IClassStudents ClassStudents
+@inject NavigationManager Navigation
+@inject IClass Class
 <MudStack Class="pa-6">
+    <MudGrid Class="pa-3">
+        <MudItem>
+            <MudMenu>
+                <MudMenuItem OnClick="NavigateTo">نوي زده کوونکي</MudMenuItem>
+                <MudMenuItem OnClick="(() => _allowEdit = !_allowEdit)">
+                    @(_allowEdit ? "فیس تغیر کړئ" : "فیس تغیر بند کړئ")
+                </MudMenuItem>
+                <MudMenuItem OnClick="OnClickMenu">انتقال</MudMenuItem>
+                <MudMenuItem OnClick="DeleteStudent">حذف</MudMenuItem>
+            </MudMenu>
+        </MudItem>
+        @if (_allowMove)
+        {
+            <MudItem>
+                <MudLocalizedSelect>
+                    @foreach (var item in classesList)
+                    {
+                        <MudSelectItem Value="item.Id">@item.Name</MudSelectItem>
+                    }
+                </MudLocalizedSelect>
+            </MudItem>
+            <MudItem>
+                <MudButton>انتقال</MudButton>
+            </MudItem>
+        }
+    </MudGrid>
     <MudPaper Class="pa-3">
-        <MudButton OnClick="ShowNewStudentDialog" Variant="Variant.Filled" Color="Color.Primary">نوي زده کوونکي</MudButton>
-    </MudPaper>
-    <MudPaper Class="pa-3">
-        <MudSimpleTable Hover="true" Style="overflow-x: auto;" Dense="true" Elevation="0">
-            <thead class="bahij-nassim-bold">
-                <tr>
-                    <th>آیډي</th>
-                    <th>مکمل نوم</th>
-                    <th>د پلار نوم</th>
-                    <th>فیس مبلغ</th>
-                    <th>عملیه</th>
-                </tr>
-            </thead>
-            <tbody class="bahij-nassim-regular">
-                <tr>
-                    <td>123</td>
-                    <td>احمد روحاني</td>
-                    <td>حاجي صاحب</td>
-                    <td>250</td>
-                    <td>
-                        <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                            <MudMenuItem OnClick="@(e => ShowDeleteDialog(15))">
-                                <span class="bahij-nassim-regular">حذف</span>
-                            </MudMenuItem>
-                            <MudMenuItem OnClick="@(e => ShowMoveStudentDialog(15))">
-                                <span class="bahij-nassim-regular">انتقال</span>
-                            </MudMenuItem>
-                            <MudMenuItem OnClick="@(e => ShowEditFeesDialog(10))">
-                                <span class="bahij-nassim-regular">فیس تغیر</span>
-                            </MudMenuItem>
-                        </MudMenu>
-                    </td>
-                </tr>
-            </tbody>
-        </MudSimpleTable>
+        <MudTable @ref="_table" Hover Dense MultiSelection Items="classStudents" Loading="_loading" @bind-SelectOnRowClick="_selectOnRowClick" OnCommitEditClick="OnEditRow">
+            <HeaderContent>
+                <MudTh>آیډي</MudTh>
+                <MudTh>مکمل نوم</MudTh>
+                <MudTh>د پلار نوم</MudTh>
+                <MudTh>فیس مبلغ</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="آیډي">@context.Student.UnitqueKey</MudTd>
+                <MudTd DataLabel="مکمل نوم">@context.Student.FirstName</MudTd>
+                <MudTd DataLabel="د پلار نوم">@context.Student.FatherName</MudTd>
+                <MudTd DataLabel="فیس مبلغ">@context.StudentFee</MudTd>
+            </RowTemplate>
+            <RowEditingTemplate>
+                <MudTd DataLabel="آیډي">@context.Student.UnitqueKey</MudTd>
+                <MudTd DataLabel="مکمل نوم">@context.Student.FirstName</MudTd>
+                <MudTd DataLabel="د پلار نوم">@context.Student.FatherName</MudTd>
+                <MudTd DataLabel="فیس مبلغ">
+                    @if (_allowEdit)
+                    {
+                        <MudLocalizedNumericField @bind-Value="context.StudentFee" />
+                    }
+                </MudTd>
+            </RowEditingTemplate>
+            <NoRecordsContent>
+                <MudText>لیست خالي دی</MudText>
+            </NoRecordsContent>
+            <LoadingContent>
+                <MudText>انتظار سئ...</MudText>
+            </LoadingContent>
+        </MudTable>
     </MudPaper>
 </MudStack>

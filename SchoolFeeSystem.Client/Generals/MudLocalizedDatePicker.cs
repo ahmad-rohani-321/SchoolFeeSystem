@@ -9,7 +9,6 @@ namespace SchoolFeeSystem.Client.Generals
         protected override void OnInitialized()
         {
             Culture = GetPersianCulture();
-            base.OnInitialized();
         }
         public CultureInfo GetPersianCulture()
         {

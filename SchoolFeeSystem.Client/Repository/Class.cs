@@ -25,12 +25,13 @@ namespace SchoolFeeSystem.Client.Repository
 
         public async Task<Entities.Class> GetSingleClass(int id)
         {
-            return await _client.GetFromJsonAsync<Entities.Class>(_mainEndPoint + id);
+            var request = await _client.GetFromJsonAsync<Entities.Class>($"{_mainEndPoint}/{id}");
+            return request;
         }
 
         public async Task<Response<Entities.Class>> UpdateClass(Entities.Class clas)
         {
-            var request = await _client.PatchAsJsonAsync(_mainEndPoint, clas);
+            var request = await _client.PutAsJsonAsync(_mainEndPoint, clas);
             return await request.Content.ReadFromJsonAsync<Response<Entities.Class>>();
         }
     }
