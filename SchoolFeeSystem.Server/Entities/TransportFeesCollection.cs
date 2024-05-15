@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolFeeSystem.Server.Entities
 {
-    public class FeesCollection
+    public class TransportFeesCollection
     {
         [Key]
         public int Id { get; set; }
@@ -15,7 +15,7 @@ namespace SchoolFeeSystem.Server.Entities
         [ForeignKey(nameof(PeriodId))]
         public FeesCollectionPeriod FeesCollectionPeriod { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
-        [ForeignKey(nameof(StudentClassId))]
+        [ForeignKey(nameof(StudentClassId))] 
         public ClassStudents ClassStudent { get; set; }
     }
 }

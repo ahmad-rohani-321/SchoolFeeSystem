@@ -1,107 +1,73 @@
 ﻿@page "/fees"
 @inject IDialogService DialogService
+@inject IClass Class
+@inject IFeesCollection Collection
+@inject ISnackbar Snackbar
 <MudPaper Class="pa-5 ma-8" Elevation="3">
     <MudPaper Elevation="0">
         <MudForm>
             <MudGrid Class="mb-1">
                 <MudItem>
-                    <MudItem>
-                        <MudLocalizedSelect Label="پلټني ډول">
-                            <MudSelectItem Value="0">آیډی</MudSelectItem>
-                            <MudSelectItem Value="1" >نوم</MudSelectItem>
-                            <MudSelectItem Value="2">د پلار نوم</MudSelectItem>
-                            <MudSelectItem Value="3">د نیکه نوم</MudSelectItem>
-                            <MudSelectItem Value="4">موبایل</MudSelectItem>
-                            <MudSelectItem Value="5">تذکره</MudSelectItem>
-                        </MudLocalizedSelect>
-                    </MudItem>
-                </MudItem>
-                <MudItem>
-                    <MudLocalizedTextField Label="پلټنه" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Secondary"/>
-                </MudItem>
-                <MudItem>
-                    <MudButton Disabled="@_searchProcess" OnClick="SearchProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
-                        @if (_searchProcess)
-                        {
-                            <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
-                        }
-                        else
-                        {
-                            <MudText>پلټنه</MudText>
-                        }
-                    </MudButton>
-                </MudItem>
-                <MudItem>
 
-                    <MudLocalizedSelect Text="ټولګۍ انتخاب کړۍ">
-                        <MudSelectItem Value="0">لومړۍ ټولګۍ</MudSelectItem>
-                        <MudSelectItem Value="1">دوهم ټولګۍ</MudSelectItem>
-                        <MudSelectItem Value="2">درېيم ټولګۍ</MudSelectItem>
-                        <MudSelectItem Value="3">څلورم ټولګۍ</MudSelectItem>
+                    <MudLocalizedSelect @ref="classSelect" Text="ټولګۍ انتخاب کړۍ" ValueChanged="ClassChanged">
+                        @foreach (var item in classes)
+                        {
+                            <MudSelectItem Value="item.Id">@item.Name</MudSelectItem>
+                        }
                     </MudLocalizedSelect>
 
                 </MudItem>
             </MudGrid>
         </MudForm>
     </MudPaper>
-    <MudSimpleTable Hover="true" Style="overflow-x: auto;" FixedHeader="true" Dense="true">
-        <thead class="bahij-nassim-bold">
-            <tr>
-                <th>آیډي</th>
-                <th>مکمل نوم او د پلار نوم</th>
-                <th>ټولګۍ</th>
-                <th>د فیس اصلي مبلغ</th>
-                <th>د فیس اخیستل سوی مبلغ</th>
-                <th>د فیس پاته مبلغ</th>
-            </tr>
-        </thead>
-        <tbody class="bahij-nassim-regular">
-            <tr>
-                <td>123</td>
-                <td>احمد روحاني</td>
-                <td>لومړی ټولګی</td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-            </tr>
-            <tr>
-                <td>123</td>
-                <td>احمد روحاني</td>
-                <td>لومړی ټولګی</td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-            </tr>
-            <tr>
-                <td>123</td>
-                <td>احمد روحاني</td>
-                <td>لومړی ټولګی</td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-                <td>
-                    <MudLocalizedNumericField Min="0" />
-                </td>
-            </tr>
-        </tbody>
-    </MudSimpleTable>
-    <MudButton Disabled="@_saveProcess" OnClick="SaveProcessSomething" Variant="Variant.Filled" Class="my-4" FullWidth="true" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">
-        @if (_saveProcess)
+    <MudTable Items="fees" Hover FixedHeader Dense Loading="_isLoading">
+        <HeaderContent>
+            <MudTh>آیډي</MudTh>
+            <MudTh>مکمل نوم او د پلار نوم</MudTh>
+            <MudTh>ټولګۍ</MudTh>
+            <MudTh>د فیس اصلي مبلغ</MudTh>
+            <MudTh>د فیس اخیستل سوی مبلغ</MudTh>
+            <MudTh>د فیس پاته مبلغ</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                @context.ClassStudent.Student.UnitqueKey
+            </MudTd>
+            <MudTd>
+                @context.ClassStudent.Student.FirstName ولد @context.ClassStudent.Student.FatherName
+            </MudTd>
+            <MudTd>@context.ClassStudent.Class.Name</MudTd>
+            <MudTd>
+                @context.Amount
+            </MudTd>
+            <MudTd>
+                @context.Taken
+            </MudTd>
+            <MudTd>
+                @context.Remaining
+            </MudTd>
+        </RowTemplate>
+        <RowEditingTemplate>
+            <MudTd>
+                @context.ClassStudent.Student.UnitqueKey
+            </MudTd>
+            <MudTd>
+                @context.ClassStudent.Student.FirstName ولد @context.ClassStudent.Student.FatherName
+            </MudTd>
+            <MudTd>@context.ClassStudent.Class.Name</MudTd>
+            <MudTd>
+                @context.Amount
+            </MudTd>
+            <MudTd>
+                <MudLocalizedNumericField @bind-Value="context.Taken" />
+            </MudTd>
+            <MudTd>
+                @context.Remaining
+            </MudTd>
+        </RowEditingTemplate>
+    </MudTable>
+    <MudButton Disabled="@_processing" OnClick="Save" Variant="Variant.Filled" Class="my-4" FullWidth="true" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">
+        @if (_processing)
         {
             <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
         }

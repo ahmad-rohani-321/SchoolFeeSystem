@@ -15,4 +15,5 @@ builder.Services.AddScoped<IStudents, Students>();
 builder.Services.AddScoped<IBranch, Branch>();
 builder.Services.AddScoped<IClass, Class>();
 builder.Services.AddScoped<IClassStudents, ClassStudents>();
+builder.Services.AddScoped<IFeesCollection, FeesCollection>();
 await builder.Build().RunAsync();

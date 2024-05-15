@@ -7,7 +7,7 @@
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
         public string ClassTiming { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public int FeeAmount { get; set; }
         public int BranchId { get; set; }
         public Branch Branch { get; set; }

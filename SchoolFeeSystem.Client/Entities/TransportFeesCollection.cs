@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolFeeSystem.Server.Entities
+namespace SchoolFeeSystem.Client.Entities
 {
-    public class FeesCollection
+    public class TransportFeesCollection
     {
-        [Key]
         public int Id { get; set; }
         public int StudentClassId { get; set; }
         public int Amount { get; set; }

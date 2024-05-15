@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolFeeSystem.Server;
 
@@ -11,9 +12,11 @@ using SchoolFeeSystem.Server;
 namespace SchoolFeeSystem.Server.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240514125116_FeesChanged")]
+    partial class FeesChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
+                    b.Property<int>("ActivityFeesAmount")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
@@ -141,22 +144,22 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("FeesAmount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FeesDiscount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FeesRemaining")
+                        .HasColumnType("int");
 
                     b.Property<int>("PeriodId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Remaining")
-                        .HasColumnType("int");
-
                     b.Property<int>("StudentClassId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Taken")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -298,22 +301,22 @@ namespace SchoolFeeSystem.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PeriodId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Remaining")
-                        .HasColumnType("int");
-
                     b.Property<int>("StudentClassId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Taken")
+                    b.Property<int>("TransportFeesAmount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransportFeesDiscount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransportFeesRemaining")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

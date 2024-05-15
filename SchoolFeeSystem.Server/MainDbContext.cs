@@ -21,8 +21,9 @@ namespace SchoolFeeSystem.Server
         public DbSet<Branch> Branches { get; set; }
         public DbSet<ClassStudents> ClassStudents { get; set; }
         public DbSet<StudentIdCard> StudentIdCard { get; set; }
+        public DbSet<FeesCollectionPeriod> FeesCollectionPeriod { get; set; }
         public DbSet<FeesCollection> FeesCollection { get; set; }
-        public DbSet<StudentExtraIncome> StudentExtraIncome { get; set; }
-        public DbSet<StudentExtraIncomeCollection> StudentExtraIncomeCollection { get; set; }
+        public DbSet<ActivityFeesCollection> ActivityFeesCollection { get; set; }
+        public DbSet<TransportFeesCollection> TransportFeesCollection { get; set; }
     }
 }
