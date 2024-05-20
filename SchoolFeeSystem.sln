@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Client", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolFeeSystem.Shared", "SchoolFeeSystem.Shared\SchoolFeeSystem.Shared.csproj", "{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFeeSystem.Components", "SchoolFeeSystem.Components\SchoolFeeSystem.Components.csproj", "{BFB766DE-3DEE-46CD-9C91-C30D799E16D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFeeSystem.MAUI", "SchoolFeeSystem.MAUI\SchoolFeeSystem.MAUI.csproj", "{7A6E5533-C923-4993-B3E3-4F620C25BEB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,16 @@ Global
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4CCA57-FDDC-4A24-AE9B-9A014965B37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB766DE-3DEE-46CD-9C91-C30D799E16D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB766DE-3DEE-46CD-9C91-C30D799E16D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB766DE-3DEE-46CD-9C91-C30D799E16D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB766DE-3DEE-46CD-9C91-C30D799E16D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A6E5533-C923-4993-B3E3-4F620C25BEB8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
